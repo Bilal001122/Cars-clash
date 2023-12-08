@@ -11,13 +11,14 @@ class ConnexionBdd
         try {
             $bdd = new PDO("mysql:host={$this->BDD_HOST};dbname={$this->BDD_DATABASE_NAME}", $this->BDD_USER, $this->BDD_PASSWORD);
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $bdd;
         } catch (PDOException $exception) {
             printf("Erreur de connexion à la base de données : %s\n", $exception->getMessage());
         }
+        return $bdd;
+
     }
 
-    public function deconnexion($bdd)
+    public function deconnexion(&$bdd)
     {
         $bdd = null;
     }
