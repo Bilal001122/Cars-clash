@@ -74,7 +74,6 @@ class PageMarquesView extends GlobalView
                   </td>
                 </tr><?php
 }
-
         ?>
 
               </tbody>

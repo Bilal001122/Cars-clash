@@ -328,7 +328,7 @@ body {
   color: #85a8f8;
 }
 
-.form-select {
+/* .form-select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -364,13 +364,115 @@ body {
   align-items: center;
   gap: 0.4rem;
   font-size: 1.6rem;
+} */
+
+/* .dataTables_wrapper {
+  padding-top: 1.6rem;
+} */
+
+.dataTables_length {
+  display: inline-block;
+  width: 50%;
 }
 
-thead th::after,
+.dataTables_length select {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  font-size: 1.6rem;
+  font-family: inherit;
+}
+
+.dataTables_length select:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+.dataTables_filter {
+  display: inline-block;
+  width: 50%;
+}
+
+.dataTables_filter input {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  font-size: 1.6rem;
+  font-family: inherit;
+}
+
+.dataTables_filter input:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+.dataTables_info {
+  display: inline-block;
+  width: 50%;
+  font-weight: 700;
+}
+
+.dataTables_paginate {
+  display: inline-block;
+  width: 50%;
+}
+
+.dataTables_paginate * {
+  border: inset 1px rgba(57, 56, 56, 0.443);
+}
+
+.dataTables_paginate > *:first-child {
+  border-right: none;
+}
+
+.dataTables_paginate > *:last-child {
+  border-left: none;
+}
+
+.dataTables_paginate a {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--white-color);
+  text-decoration: none;
+}
+
+.dataTables_paginate a:hover {
+  text-decoration: underline;
+  background-color: var(--body-color);
+}
+
+.paginate_button.previous {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.paginate_button.next {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dataTables_paginate span a {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dataTables_paginate span a.current {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+
+.dataTables_filter thead th::after,
 thead th::before {
   padding: 1px 0;
   color: var(--accent-color) !important;
 }
+
 thead tr th {
   padding: 1.6rem !important;
   background-color: var(--primary-color) !important;

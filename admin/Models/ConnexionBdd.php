@@ -4,7 +4,7 @@ class ConnexionBdd
     private $BDD_HOST = 'localhost';
     private $BDD_USER = 'root';
     private $BDD_PASSWORD = '';
-    private $BDD_DATABASE_NAME = 'carsclash';
+    private $BDD_DATABASE_NAME = 'tdw';
 
     public function connexion()
     {
