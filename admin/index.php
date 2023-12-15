@@ -58,21 +58,22 @@ switch ($baseURL) {
         $controller = new GestionMarquesController();
         $controller->showPageMarques();
         break;
+    case "/cars-clash/admin/edit-marque":
+        $controller = new GestionMarquesController();
+        $controller->showPageEditMarque($idMarque);
+        break;
     case "/cars-clash/admin/gestion-avis":
         $controller = new GestionAvisController();
         $controller->showPageAvis();
         break;
-
     case "/cars-clash/admin/gestion-news":
         $controller = new GestionNewsController();
         $controller->showPageNews();
         break;
-
     case "/cars-clash/admin/gestion-utilisateurs":
         $controller = new GestionUtilisateurController();
         $controller->showPageUtilisateur();
         break;
-
     case "/cars-clash/admin/gestion-params":
         $controller = new GestionParamsController();
         $controller->showPageParams();

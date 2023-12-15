@@ -17,12 +17,27 @@ class GlobalView
     rel="stylesheet">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <link rel="stylesheet" href="./../../cars-clash/extra_files/bootstrap.min.css">
-  <link rel="stylesheet" href="./../../cars-clash/extra_files/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="Views/css/admin.css" />
-  <script defer src="./../../cars-clash/extra_files/jquery.min.js"></script>
-  <script defer src="./../../cars-clash/extra_files/jquery.dataTables.min.js"></script>
-  <script defer src="./../../cars-clash/extra_files/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="/cars-clash/public/bootstrap.min.css">
+  <link rel="stylesheet" href="/cars-clash/public/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="/cars-clash/admin/Views/css/admin.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="/cars-clash/public/jquery.min.js"></script>
+  <script defer src="/cars-clash/public/jquery.dataTables.min.js"></script>
+  <script defer src="/cars-clash/public/jquery.dataTables.min.js"></script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          myprimary: '#3563e9',
+          mysecondary: '#c3d4e9',
+          myaccent: '#1a202c',
+          mybody: '#f6f7f9',
+        }
+      }
+    }
+  }
+  </script>
   <script defer src="admin.js"></script>
   <title>Cars Clash</title>
 </head>
@@ -34,18 +49,18 @@ class GlobalView
         ?>
 <header class="header">
   <div class="header_logo">
-    <img src="Views/public/logo_without_bg.png" alt="logo" class="header_logo_img">
+    <img src="/cars-clash/admin/Views/public/logo_without_bg.png" alt="logo" class="header_logo_img">
     <p class="header_logo_text">CARS CLASH</p>
   </div>
   <div class="social_links">
     <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
-      <img src="Views/public/facebook.png" alt="Facebook" class="social_links_link_img">
+      <img src="/cars-clash/admin/Views/public/facebook.png" alt="Facebook" class="social_links_link_img">
     </a>
     <a href="https://www.twitter.com/" target="_blank" class="social_links_link">
-      <img src="Views/public/twitter.png" alt="Twitter" class="social_links_link_img">
+      <img src="/cars-clash/admin/Views/public/twitter.png" alt="Twitter" class="social_links_link_img">
     </a>
     <a href="https://www.linkedin.com/" target="_blank" class="social_links_link">
-      <img src="Views/public/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
+      <img src="/cars-clash/admin/Views/public/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
     </a>
     <form class="form_dcnx" action="./redirect.php" method="post">
       <button type="submit" class="deconnexion_btn" name="logout">

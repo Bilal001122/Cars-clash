@@ -65,12 +65,18 @@ class PageMarquesView extends GlobalView
                   <td><?php echo $marque['Annee_de_creation'] ?></td>
                   <td><?php echo $marque['Image_marque'] ?></td>
                   <td class="actions_container">
-                    <a href="./gestion-marques?modifier=<?php echo $marque['ID_Marque'] ?>" title="Modifier">
-                      <ion-icon class="modify-icon" name="create"></ion-icon>
-                    </a>
-                    <a href="./gestion-marques?supprimer=<?php echo $marque['ID_Marque'] ?>" title="Supprimer">
-                      <ion-icon class="delete-icon" name="trash-outline"></ion-icon>
-                    </a>
+                    <form class="d-inline-block" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $marque['ID_Marque'] ?>" name="ID_Marque">
+                      <button type="submit" name="goto-modifier-marque">
+                        <ion-icon class="modify-icon" name="create"></ion-icon>
+                      </button>
+                    </form>
+                    <form class="d-inline-block" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $marque['ID_Marque'] ?>" name="ID_Marque">
+                      <button type="submit" name="supprimer-marque">
+                        <ion-icon class="delete-icon" name="trash-outline"></ion-icon>
+                      </button>
+                    </form>
                   </td>
                 </tr><?php
 }
