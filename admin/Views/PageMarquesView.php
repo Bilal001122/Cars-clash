@@ -35,7 +35,11 @@ class PageMarquesView extends GlobalView
     <div class="dashboard_body">
       <div class="marques_container">
         <div class="marques_container_add_button_container">
-          <a class="marques_container_add_button">Ajouter une marque</a>
+          <form action="./redirect.php" method="post">
+            <button type="submit" name="goto-ajouter-marque" class="marques_container_add_button bg-myprimary mt-2">Ajouter
+              une
+              marque</button>
+          </form>
         </div>
         <div class="marques_container_table">
           <div class="marques_container_table_title">Les Marques</div>

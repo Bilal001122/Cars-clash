@@ -78,4 +78,8 @@ switch ($baseURL) {
         $controller = new GestionParamsController();
         $controller->showPageParams();
         break;
+    case "/cars-clash/admin/add-marque":
+        $controller = new GestionMarquesController();
+        $controller->showPageAddMarque();
+        break;
 }
