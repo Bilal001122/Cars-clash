@@ -1,10 +1,12 @@
 <?php
-
+require_once 'Controllers/GestionVehiculesController.php';
 class PageVehiculesView extends GlobalView
 {
 
     public function content()
     {
+        $controller = new GestionVehiculesController();
+        $allVehicules = $controller->getAllVehicules();
         ?>
 
 <body>
@@ -14,7 +16,7 @@ class PageVehiculesView extends GlobalView
         <a class="menu_item_link actuel" href="./gestion-vehicules">Véhicules</a>
       </div>
       <div class="menu_item marques">
-        <a class="menu_item_link" href="./gestion-marques">Marques</a>
+        <a class="menu_item_link " href="./gestion-marques">Marques</a>
       </div>
       <div class="menu_item avis">
         <a class="menu_item_link" href="./gestion-avis">Avis</a>
@@ -31,14 +33,71 @@ class PageVehiculesView extends GlobalView
     </div>
 
     <div class="dashboard_body">
-      <div class="vehicules_container">
-        <div class="vehicules_container_add_button_container">
-          <a class="vehicules_container_add_button">Ajouter une véhicule</a>
+      <div class="marques_container">
+        <div class="marques_container_add_button_container">
+          <form action="./redirect.php" method="post">
+            <button type="submit" name="goto-ajouter-marque"
+              class="marques_container_add_button bg-myprimary mt-2">Ajouter
+              une
+              véhicule</button>
+          </form>
         </div>
-        <div class="vehicules_container_table">
-          <div class="vehicules_container_table_title">Les Véhicules</div>
-          <div class="vehicules_container_table_real_table">
+        <div class="marques_container_table">
+          <div class="marques_container_table_title">Les Véhicules</div>
+          <div class="marques_container_table_real_table">
+            <table id="example" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Modèle</th>
+                  <th>Marque</th>
+                  <th>Version</th>
+                  <th>Année</th>
+                  <th>Dimen</th>
+                  <th>Consom</th>
+                  <th>Moteur</th>
+                  <th>Perfo</th>
+                  <th>Prix</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
 
+        foreach ($allVehicules as $vehicule) {
+            ?>
+                <tr>
+                  <td><?php echo $vehicule['ID_Vehicule'] ?></td>
+                  <td><?php echo $vehicule['Modele'] ?></td>
+                  <td><?php echo $vehicule['Nom_marque'] ?></td>
+                  <td><?php echo $vehicule['Version'] ?></td>
+                  <td><?php echo $vehicule['Annee'] ?></td>
+                  <td><?php echo $vehicule['Dimensions'] ?></td>
+                  <td><?php echo $vehicule['Consommation'] ?></td>
+                  <td><?php echo $vehicule['Moteur'] ?></td>
+                  <td><?php echo $vehicule['Performance'] ?></td>
+                  <td><?php echo $vehicule['Prix'] . '$' ?></td>
+                  <td class="actions_container">
+                    <form class="d-inline-block" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="ID_Vehicule">
+                      <button type="submit" name="goto-modifier-vehicule" title="modifier">
+                        <ion-icon class="modify-icon" name="create"></ion-icon>
+                      </button>
+                    </form>
+                    <form class="d-inline-block" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="ID_Vehicule">
+                      <button type="submit" name="supprimer-vehicule" title="supprimer">
+                        <ion-icon class="delete-icon" name="trash-outline"></ion-icon>
+                      </button>
+                    </form>
+                  </td>
+                </tr><?php
+}
+        ?>
+
+              </tbody>
+
+            </table>
           </div>
         </div>
       </div>

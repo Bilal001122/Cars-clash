@@ -36,7 +36,8 @@ class PageMarquesView extends GlobalView
       <div class="marques_container">
         <div class="marques_container_add_button_container">
           <form action="./redirect.php" method="post">
-            <button type="submit" name="goto-ajouter-marque" class="marques_container_add_button bg-myprimary mt-2">Ajouter
+            <button type="submit" name="goto-ajouter-marque"
+              class="marques_container_add_button bg-myprimary mt-2">Ajouter
               une
               marque</button>
           </form>
@@ -52,7 +53,7 @@ class PageMarquesView extends GlobalView
                   <th>Pays origine</th>
                   <th>Siege sociale</th>
                   <th>Année de création</th>
-                  <th>Image</th>
+                  <th>Logo</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -67,17 +68,20 @@ class PageMarquesView extends GlobalView
                   <td><?php echo $marque['Pays_origine'] ?></td>
                   <td><?php echo $marque['Siege_social'] ?></td>
                   <td><?php echo $marque['Annee_de_creation'] ?></td>
-                  <td><?php echo $marque['Image_marque'] ?></td>
+                  <td>
+                    <img class="max-h-16 mx-auto "
+                      src="/cars-clash/public/images/marques<?php echo $marque['Image_marque'] ?>" alt="">
+                  </td>
                   <td class="actions_container">
                     <form class="d-inline-block" action="./redirect.php" method="POST">
                       <input type="hidden" value="<?php echo $marque['ID_Marque'] ?>" name="ID_Marque">
-                      <button type="submit" name="goto-modifier-marque">
+                      <button type="submit" name="goto-modifier-marque" title="modifier">
                         <ion-icon class="modify-icon" name="create"></ion-icon>
                       </button>
                     </form>
                     <form class="d-inline-block" action="./redirect.php" method="POST">
                       <input type="hidden" value="<?php echo $marque['ID_Marque'] ?>" name="ID_Marque">
-                      <button type="submit" name="supprimer-marque">
+                      <button type="submit" name="supprimer-marque" title="supprimer">
                         <ion-icon class="delete-icon" name="trash-outline"></ion-icon>
                       </button>
                     </form>

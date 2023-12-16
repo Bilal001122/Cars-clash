@@ -82,4 +82,8 @@ switch ($baseURL) {
         $controller = new GestionMarquesController();
         $controller->showPageAddMarque();
         break;
+    case "/cars-clash/admin/edit-vehicule":
+        $controller = new GestionVehiculesController();
+        $controller->showPageEditVehicule($idVehicule);
+        break;
 }

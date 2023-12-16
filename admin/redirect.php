@@ -1,6 +1,7 @@
 <?php
 require_once 'Controllers/PageLoginController.php';
 require_once 'Controllers/GestionMarquesController.php';
+require_once 'Controllers/GestionVehiculesController.php';
 
 session_start();
 
@@ -39,4 +40,15 @@ if (isset($_POST['goto-ajouter-marque'])) {
 if (isset($_POST['add-marque'])) {
     $marqueController = new GestionMarquesController();
     $marqueController->handleAddMarque();
+}
+
+if (isset($_POST['goto-modifier-vehicule'])) {
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleGotoEditVehicule();
+}
+
+if (isset($_POST['modifier-vehicule'])) {
+    // $idVehicule = $_POST['id-vehicule'];
+    // $vehiculeController = new GestionVehiculesController();
+    // $vehiculeController->handleEditVehicule($idVehicule);
 }

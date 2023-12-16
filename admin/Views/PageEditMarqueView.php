@@ -52,7 +52,7 @@ class PageEditMarqueView extends GlobalView
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Annee de création:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="marque_annee" id="marque_annee"
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="marque_annee" id="marque_annee"
             value="<?php echo "{$marque["Annee_de_creation"]}" ?>">
         </div>
 
