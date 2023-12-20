@@ -1,6 +1,8 @@
 <?php
 require_once 'Views/PageVehiculesView.php';
 require_once 'Views/PageEditVehiculeView.php';
+require_once 'Views/PageDetailsVehiculeView.php';
+require_once 'Views/PageAddVehiculeView.php';
 require_once 'Models/GestionVehiculesModel.php';
 class GestionVehiculesController
 {
@@ -26,6 +28,103 @@ class GestionVehiculesController
         header("Location: ./edit-vehicule?idVehicule={$idVehicule}");
     }
 
+    public function handleGotoDetailsVehicule()
+    {
+        $idVehicule = $_POST['ID_Vehicule'];
+        header("Location: ./details-vehicule?idVehicule={$idVehicule}");
+    }
+
+    public function handleGotoAddVehicule()
+    {
+        header("Location: ./add-vehicule");
+    }
+
+    public function handleAddVehicule()
+    {
+        $modele = $_POST['vehicule_modele'];
+        $version = $_POST['vehicule_version'];
+        $annee = $_POST['vehicule_annee'];
+        $dimensions = $_POST['vehicule_dimensions'];
+        $consommation = $_POST['vehicule_consommation'];
+        $moteur = $_POST['vehicule_moteur'];
+        $performance = $_POST['vehicule_performance'];
+        $prix = $_POST['vehicule_prix'];
+        $idMarque = $_POST['vehicule_marque'];
+        if (isset($_FILES["vehicule_image"])) {
+            $imageVehicule = $_FILES['vehicule_image'];
+        }
+        // uploader le ficher de l'image
+        if ($imageVehicule["error"] == 0) {
+            $r = explode(".", $imageVehicule["name"]);
+            $imageVehiculeName = $r[0];
+            $imageVehiculeExt = strtolower(end($r));
+
+            $tmpImage = $imageVehicule["tmp_name"];
+            while (!is_uploaded_file($tmpImage)) {
+                // attendre que le fichier soit uploadé
+            }
+            if (in_array($imageVehiculeExt, array('jpg', 'jpeg', 'png', 'mp4'))) {
+                $imageDest = "../public/images/vehicules/" . $imageVehicule["name"];
+                move_uploaded_file($tmpImage, $imageDest);
+            }
+            $imageVehiculeName = "/" . $imageVehiculeName;
+        } else {
+            $imageVehiculeName = null;
+        }
+        $model = new GestionVehiculesModel();
+        $model->addVehicule($modele, $version, $annee, $dimensions, $consommation, $moteur, $performance, $prix, $imageVehiculeName, $idMarque);
+        header("Location: ./gestion-vehicules");
+    }
+
+    public function handleEditVehicule($idVehicule)
+    {
+        $modele = $_POST['vehicule_modele'];
+        $version = $_POST['vehicule_version'];
+        $annee = $_POST['vehicule_annee'];
+        $dimensions = $_POST['vehicule_dimensions'];
+        $consommation = $_POST['vehicule_consommation'];
+        $moteur = $_POST['vehicule_moteur'];
+        $performance = $_POST['vehicule_performance'];
+        $prix = $_POST['vehicule_prix'];
+        $idMarque = $_POST['vehicule_marque'];
+        echo "
+        <script>
+            console.log('{$idMarque}');
+        </script>
+        ";
+        if (isset($_FILES["vehicule_image"])) {
+            $imageVehicule = $_FILES['vehicule_image'];
+        }
+        // uploader le ficher de l'image
+        if ($imageVehicule["error"] == 0) {
+            $r = explode(".", $imageVehicule["name"]);
+            $imageVehiculeName = $r[0];
+            $imageVehiculeExt = strtolower(end($r));
+
+            $tmpImage = $imageVehicule["tmp_name"];
+            while (!is_uploaded_file($tmpImage)) {
+                // attendre que le fichier soit uploadé
+            }
+            if (in_array($imageVehiculeExt, array('jpg', 'jpeg', 'png', 'mp4'))) {
+                $imageDest = "../public/images/vehicules/" . $imageVehicule["name"];
+                move_uploaded_file($tmpImage, $imageDest);
+            }
+            $imageVehiculeName = "/" . $imageVehiculeName;
+        } else {
+            $imageVehiculeName = null;
+        }
+        $model = new GestionVehiculesModel();
+        $model->editVehicule($idVehicule, $modele, $version, $annee, $dimensions, $consommation, $moteur, $performance, $prix, $imageVehiculeName, $idMarque);
+        header("Location: ./gestion-vehicules");
+    }
+
+    public function handleDeleteVehicule($idVehicule)
+    {
+        $model = new GestionVehiculesModel();
+        $model->deleteVehicule($idVehicule);
+        header("Location: ./gestion-vehicules");
+    }
+
     public function showPageEditVehicule($idVehicule)
     {
         $view = new PageEditVehiculeView();
@@ -36,5 +135,17 @@ class GestionVehiculesController
     {
         $view = new PageVehiculesView();
         $view->showPageVehicule();
+    }
+
+    public function showPageDetailsVehicule($idVehicule)
+    {
+        $view = new PageDetailsVehiculeView();
+        $view->showPageDetailsVehicule($idVehicule);
+    }
+
+    public function showPageAddVehicule()
+    {
+        $view = new PageAddVehiculeView();
+        $view->showPageAddVehicule();
     }
 }

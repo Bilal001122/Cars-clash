@@ -1,16 +1,12 @@
 <?php
 require_once 'Controllers/GestionVehiculesController.php';
-require_once 'Controllers/GestionMarquesController.php';
-class PageEditVehiculeView extends GlobalView
+class PageDetailsVehiculeView extends GlobalView
 {
 
     public function content($idVehicule)
     {
         $controller = new GestionVehiculesController();
         $vehicule = $controller->getVehiculeById();
-
-        $controller = new GestionMarquesController();
-        $allMarques = $controller->getAllMarques();
         ?>
 
 <body>
@@ -42,69 +38,51 @@ class PageEditVehiculeView extends GlobalView
         <div class="flex flex-col gap-10 mr-10 ml-10">
           <label class="font-semibold" for="marque_name">Modèle:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_modele" id="vehicule_modele"
-            value="<?php echo "{$vehicule["Modele"]}" ?>">
+            value="<?php echo "{$vehicule["Modele"]}" ?>" disabled>
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_pays">Version:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_version" id="vehicule_version"
-            value="<?php echo "{$vehicule["Version"]}" ?>">
+            value="<?php echo "{$vehicule["Version"]}" ?>" disabled>
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_siege">Année:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_annee" id="vehicule_annee"
-            value="<?php echo "{$vehicule["Annee"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_annee" id="vehicule_annee"
+            value="<?php echo "{$vehicule["Annee"]}" ?>" disabled>
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Dimensions:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_dimensions"
-            id="vehicule_dimensions" value="<?php echo "{$vehicule["Dimensions"]}" ?>">
+            id="vehicule_dimensions" value="<?php echo "{$vehicule["Dimensions"]}" ?>" disabled>
         </div>
 
         <div class="flex flex-col gap-10 mr-10 ml-10">
           <label class="font-semibold" for="marque_annee">Consommation:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_consommation"
-            id="vehicule_consommation" value="<?php echo "{$vehicule["Consommation"]}" ?>">
+            id="vehicule_consommation" value="<?php echo "{$vehicule["Consommation"]}" ?>" disabled>
 
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Moteur:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_moteur" id="vehicule_moteur"
-            value="<?php echo "{$vehicule["Moteur"]}" ?>">
+            value="<?php echo "{$vehicule["Moteur"]}" ?>" disabled>
         </div>
 
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Performance:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_performance"
-            id="vehicule_performance" value="<?php echo "{$vehicule["Performance"]}" ?>">
+            id="vehicule_performance" value="<?php echo "{$vehicule["Performance"]}" ?>" disabled>
         </div>
 
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Prix:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_prix" id="vehicule_prix"
-            value="<?php echo "{$vehicule["Prix"]}" ?>">
+            value="<?php echo "{$vehicule["Prix"]}" ?>" disabled>
         </div>
-
-        <div class="flex flex-col gap-10 mr-10 col-span-4 ml-10 w-1/4 justify-self-center">
-          <label class="font-semibold" for="marque_annee">Marque:</label>
-          <select class="bg-mysecondary p-2 py-3 rounded-md" name="vehicule_marque" id="vehicule_marque">
-            <?php foreach ($allMarques as $marque) {?>
-            <option value="<?=$marque['ID_Marque']?>"><?=$marque['Nom_marque']?></option>
-            <?php }?>
-          </select>
-        </div>
-
-        <div class="flex flex-row justify-center items-center gap-10 mr-10 col-span-4 justify-self-center">
+        <div class="col-span-4 justify-self-center flex flex-col justify-center items-center">
           <label class="font-semibold" for="marque_image">Image du vehicule:</label>
-          <input type="file" name="vehicule_image" id="vehicule_image">
-        </div>
-
-        <div class="col-span-4 justify-self-center">
-          <input type="hidden" name="id-vehicule" value="<?php echo "{$vehicule["ID_Vehicule"]}" ?>">
-          <button
-            class="bg-myprimary text-white p-3 rounded-md transform hover:scale-110 transition-all ease-in-out duration-300"
-            type="submit" name="modifier-vehicule">
-            Enregistrer les modifications
-          </button>
+          <img class="w-1/3" src="/cars-clash/public/images/vehicules<?php echo "{$vehicule["Image_vehicule"]}" ?>"
+            alt="">
         </div>
       </form>
     </div>
@@ -113,7 +91,7 @@ class PageEditVehiculeView extends GlobalView
 <?php
 }
 
-    public function showPageEditVehicule($idVehicule)
+    public function showPageDetailsVehicule($idVehicule)
     {
         $this->head();
         $this->header();

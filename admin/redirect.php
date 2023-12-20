@@ -48,7 +48,28 @@ if (isset($_POST['goto-modifier-vehicule'])) {
 }
 
 if (isset($_POST['modifier-vehicule'])) {
-    // $idVehicule = $_POST['id-vehicule'];
-    // $vehiculeController = new GestionVehiculesController();
-    // $vehiculeController->handleEditVehicule($idVehicule);
+    $idVehicule = $_POST['id-vehicule'];
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleEditVehicule($idVehicule);
+}
+
+if (isset($_POST['supprimer-vehicule'])) {
+    $idVehicule = $_POST['ID_Vehicule'];
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleDeleteVehicule($idVehicule);
+}
+
+if (isset($_POST['goto-details-vehicule'])) {
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleGotoDetailsVehicule();
+}
+
+if (isset($_POST['goto-ajouter-vehicule'])) {
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleGotoAddVehicule();
+}
+
+if (isset($_POST['add-vehicule'])) {
+    $vehiculeController = new GestionVehiculesController();
+    $vehiculeController->handleAddVehicule();
 }

@@ -1,13 +1,11 @@
 <?php
 require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionMarquesController.php';
-class PageEditVehiculeView extends GlobalView
+class PageAddVehiculeView extends GlobalView
 {
 
-    public function content($idVehicule)
+    public function content()
     {
-        $controller = new GestionVehiculesController();
-        $vehicule = $controller->getVehiculeById();
 
         $controller = new GestionMarquesController();
         $allMarques = $controller->getAllMarques();
@@ -41,47 +39,42 @@ class PageEditVehiculeView extends GlobalView
         action="/cars-clash/admin/redirect.php" method="POST" enctype="multipart/form-data">
         <div class="flex flex-col gap-10 mr-10 ml-10">
           <label class="font-semibold" for="marque_name">Modèle:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_modele" id="vehicule_modele"
-            value="<?php echo "{$vehicule["Modele"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_modele" id="vehicule_modele">
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_pays">Version:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_version" id="vehicule_version"
-            value="<?php echo "{$vehicule["Version"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_version" id="vehicule_version">
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_siege">Année:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_annee" id="vehicule_annee"
-            value="<?php echo "{$vehicule["Annee"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_annee" id="vehicule_annee">
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Dimensions:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_dimensions"
-            id="vehicule_dimensions" value="<?php echo "{$vehicule["Dimensions"]}" ?>">
+            id="vehicule_dimensions">
         </div>
 
         <div class="flex flex-col gap-10 mr-10 ml-10">
           <label class="font-semibold" for="marque_annee">Consommation:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_consommation"
-            id="vehicule_consommation" value="<?php echo "{$vehicule["Consommation"]}" ?>">
+            id="vehicule_consommation">
 
         </div>
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Moteur:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_moteur" id="vehicule_moteur"
-            value="<?php echo "{$vehicule["Moteur"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_moteur" id="vehicule_moteur">
         </div>
 
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Performance:</label>
           <input class="bg-mysecondary p-2 py-3 rounded-md" type="text" name="vehicule_performance"
-            id="vehicule_performance" value="<?php echo "{$vehicule["Performance"]}" ?>">
+            id="vehicule_performance">
         </div>
 
         <div class="flex flex-col gap-10 mr-10">
           <label class="font-semibold" for="marque_annee">Prix:</label>
-          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_prix" id="vehicule_prix"
-            value="<?php echo "{$vehicule["Prix"]}" ?>">
+          <input class="bg-mysecondary p-2 py-3 rounded-md" type="number" name="vehicule_prix" id="vehicule_prix">
         </div>
 
         <div class="flex flex-col gap-10 mr-10 col-span-4 ml-10 w-1/4 justify-self-center">
@@ -99,11 +92,11 @@ class PageEditVehiculeView extends GlobalView
         </div>
 
         <div class="col-span-4 justify-self-center">
-          <input type="hidden" name="id-vehicule" value="<?php echo "{$vehicule["ID_Vehicule"]}" ?>">
+          <input type="hidden" name="id-vehicule">
           <button
             class="bg-myprimary text-white p-3 rounded-md transform hover:scale-110 transition-all ease-in-out duration-300"
-            type="submit" name="modifier-vehicule">
-            Enregistrer les modifications
+            type="submit" name="add-vehicule">
+            Ajouter le vehicule
           </button>
         </div>
       </form>
@@ -113,11 +106,11 @@ class PageEditVehiculeView extends GlobalView
 <?php
 }
 
-    public function showPageEditVehicule($idVehicule)
+    public function showPageAddVehicule()
     {
         $this->head();
         $this->header();
-        $this->content($idVehicule);
+        $this->content();
         ?>
 <?php
 }

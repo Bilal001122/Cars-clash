@@ -36,7 +36,7 @@ class PageVehiculesView extends GlobalView
       <div class="marques_container">
         <div class="marques_container_add_button_container">
           <form action="./redirect.php" method="post">
-            <button type="submit" name="goto-ajouter-marque"
+            <button type="submit" name="goto-ajouter-vehicule"
               class="marques_container_add_button bg-myprimary mt-2">Ajouter
               une
               véhicule</button>
@@ -53,11 +53,7 @@ class PageVehiculesView extends GlobalView
                   <th>Marque</th>
                   <th>Version</th>
                   <th>Année</th>
-                  <th>Dimen</th>
-                  <th>Consom</th>
-                  <th>Moteur</th>
-                  <th>Perfo</th>
-                  <th>Prix</th>
+                  <th>Lien vers détails</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -72,11 +68,14 @@ class PageVehiculesView extends GlobalView
                   <td><?php echo $vehicule['Nom_marque'] ?></td>
                   <td><?php echo $vehicule['Version'] ?></td>
                   <td><?php echo $vehicule['Annee'] ?></td>
-                  <td><?php echo $vehicule['Dimensions'] ?></td>
-                  <td><?php echo $vehicule['Consommation'] ?></td>
-                  <td><?php echo $vehicule['Moteur'] ?></td>
-                  <td><?php echo $vehicule['Performance'] ?></td>
-                  <td><?php echo $vehicule['Prix'] . '$' ?></td>
+                  <td>
+                    <form class="flex justify-center items-center" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="ID_Vehicule">
+                      <button type="submit" name="goto-details-vehicule" title="détails">
+                        <ion-icon class=" h-16 details-icon" name="eye"></ion-icon>
+                      </button>
+                    </form>
+                  </td>
                   <td class="actions_container">
                     <form class="d-inline-block" action="./redirect.php" method="POST">
                       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="ID_Vehicule">
