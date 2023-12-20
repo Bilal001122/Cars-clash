@@ -3,6 +3,7 @@ require_once 'Controllers/PageLoginController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionUtilisateursController.php';
+require_once 'Controllers/GestionAvisController.php';
 
 session_start();
 
@@ -83,4 +84,14 @@ if (isset($_POST['valider-user'])) {
 if (isset($_POST['bloquer-user'])) {
     $userController = new GestionUtilisateurController();
     $userController->handleBloquerUser();
+}
+
+if (isset($_POST['valider-commentaire'])) {
+    $avisController = new GestionAvisController();
+    $avisController->handleValiderCommentaire();
+}
+
+if (isset($_POST['bloquer-user-from-avis'])) {
+    $avisController = new GestionAvisController();
+    $avisController->handleBloquerUserFromAvis();
 }

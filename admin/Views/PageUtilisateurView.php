@@ -46,7 +46,7 @@ class PageUtilisateurView extends GlobalView
                   <th>Prénom</th>
                   <th>Sexe</th>
                   <th>Date de naissance</th>
-                  <th>Status</th>
+                  <th>Status de validation</th>
                   <th>Bloqué</th>
                   <th>Actions</th>
                 </tr>
