@@ -95,7 +95,10 @@ class GestionMarquesController
             }
             $imageMarqueName = "/" . $imageMarqueName;
         } else {
-            $imageMarqueName = null;
+            $model = new GestionMarquesModel();
+            $idMarque = $_POST['id-marque'];
+            $result = $model->getMarqueById($idMarque);
+            $imageMarqueName = $result['Image_marque'];
         }
         $model = new GestionMarquesModel();
         $model->editMarque($idMarque, $nomMarque, $paysOrigine, $siegeSocial, $anneeCreation, $imageMarqueName);

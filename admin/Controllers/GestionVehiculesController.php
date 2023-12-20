@@ -87,11 +87,7 @@ class GestionVehiculesController
         $performance = $_POST['vehicule_performance'];
         $prix = $_POST['vehicule_prix'];
         $idMarque = $_POST['vehicule_marque'];
-        echo "
-        <script>
-            console.log('{$idMarque}');
-        </script>
-        ";
+
         if (isset($_FILES["vehicule_image"])) {
             $imageVehicule = $_FILES['vehicule_image'];
         }
@@ -111,7 +107,10 @@ class GestionVehiculesController
             }
             $imageVehiculeName = "/" . $imageVehiculeName;
         } else {
-            $imageVehiculeName = null;
+            $model = new GestionVehiculesModel();
+            $idVehicule = $_POST['id-vehicule'];
+            $result = $model->getVehiculeById($idVehicule);
+            $imageVehiculeName = $result['Image_vehicule'];
         }
         $model = new GestionVehiculesModel();
         $model->editVehicule($idVehicule, $modele, $version, $annee, $dimensions, $consommation, $moteur, $performance, $prix, $imageVehiculeName, $idMarque);
