@@ -2,6 +2,7 @@
 require_once 'Controllers/PageLoginController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionVehiculesController.php';
+require_once 'Controllers/GestionUtilisateursController.php';
 
 session_start();
 
@@ -72,4 +73,14 @@ if (isset($_POST['goto-ajouter-vehicule'])) {
 if (isset($_POST['add-vehicule'])) {
     $vehiculeController = new GestionVehiculesController();
     $vehiculeController->handleAddVehicule();
+}
+
+if (isset($_POST['valider-user'])) {
+    $userController = new GestionUtilisateurController();
+    $userController->handleValiderUser();
+}
+
+if (isset($_POST['bloquer-user'])) {
+    $userController = new GestionUtilisateurController();
+    $userController->handleBloquerUser();
 }

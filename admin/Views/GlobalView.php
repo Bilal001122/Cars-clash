@@ -19,7 +19,7 @@ class GlobalView
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="/cars-clash/public/bootstrap.min.css">
   <link rel="stylesheet" href="/cars-clash/public/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="/cars-clash/admin/Views/css/admin.css" />
+  <link rel="stylesheet" href="/cars-clash/public/css/admin.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="/cars-clash/public/jquery.min.js"></script>
   <script defer src="/cars-clash/public/jquery.dataTables.min.js"></script>
@@ -49,18 +49,18 @@ class GlobalView
         ?>
 <header class="header">
   <div class="header_logo">
-    <img src="/cars-clash/admin/Views/public/logo_without_bg.png" alt="logo" class="header_logo_img">
+    <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
     <p class="header_logo_text">CARS CLASH</p>
   </div>
   <div class="social_links">
     <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/admin/Views/public/facebook.png" alt="Facebook" class="social_links_link_img">
+      <img src="/cars-clash/public/images/facebook.png" alt="Facebook" class="social_links_link_img">
     </a>
     <a href="https://www.twitter.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/admin/Views/public/twitter.png" alt="Twitter" class="social_links_link_img">
+      <img src="/cars-clash/public/images/twitter.png" alt="Twitter" class="social_links_link_img">
     </a>
     <a href="https://www.linkedin.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/admin/Views/public/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
+      <img src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
     </a>
     <form class="form_dcnx" action="./redirect.php" method="post">
       <button type="submit" class="deconnexion_btn" name="logout">

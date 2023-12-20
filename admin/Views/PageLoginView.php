@@ -9,7 +9,7 @@ class PageLoginView extends GlobalView
         $this->head();
         ?>
 <div class="login_logo">
-  <img src="Views/public/logo_without_bg.png" alt="logo" class="login_logo_image">
+  <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="login_logo_image">
   <p class="login_logo_text">CARS CLASH</p>
 </div>
 <div class="login_container">

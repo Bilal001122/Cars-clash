@@ -504,7 +504,7 @@ td {
 }
 
 .modify-icon {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
   margin-right: 5px;
   cursor: pointer;
   padding: 1.2rem;
@@ -515,7 +515,7 @@ td {
 }
 
 .delete-icon {
-  color: red !important;
+  color: red;
   margin-right: 5px;
   cursor: pointer;
   padding: 1.2rem;
