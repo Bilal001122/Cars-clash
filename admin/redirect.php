@@ -5,6 +5,7 @@ require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionUtilisateursController.php';
 require_once 'Controllers/GestionAvisController.php';
 require_once 'Controllers/GestionNewsController.php';
+require_once 'Controllers/GestionParamsController.php';
 
 session_start();
 
@@ -127,4 +128,70 @@ if (isset($_POST['goto-ajouter-news'])) {
 if (isset($_POST['ajouter-news'])) {
     $avisController = new GestionNewsController();
     $avisController->handleAddNews();
+}
+
+if (isset($_POST['goto-guide-achat'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoGuideAchat();
+}
+
+if (isset($_POST['goto-modifier-guide'])) {
+    $idGuide = $_POST['ID_Guide'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoEditGuide($idGuide);
+}
+
+if (isset($_POST['modifier-guide'])) {
+    $idGuide = $_POST['id-guide'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleEditGuide($idGuide);
+}
+
+if (isset($_POST['supprimer-guide'])) {
+    $idGuide = $_POST['ID_Guide'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleDeleteGuide($idGuide);
+}
+
+if (isset($_POST['goto-ajouter-guide'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoAddGuide();
+}
+
+if (isset($_POST['ajouter-guide'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleAddGuide();
+}
+
+if (isset($_POST['goto-diaporama'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoDiaporama();
+}
+
+if (isset($_POST['goto-modifier-diapo'])) {
+    $idDiapo = $_POST['ID_Image'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoEditDiaporama($idDiapo);
+}
+
+if (isset($_POST['modifier-diapo'])) {
+    $idDiapo = $_POST['id-diapo'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleEditDiaporama($idDiapo);
+}
+
+if (isset($_POST['supprimer-diapo'])) {
+    $idDiapo = $_POST['ID_Image'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleDeleteDiaporama($idDiapo);
+}
+
+if (isset($_POST['goto-ajouter-diapo'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoAddDiaporama();
+}
+
+if (isset($_POST['ajouter-diapo'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleAddDiaporama();
 }

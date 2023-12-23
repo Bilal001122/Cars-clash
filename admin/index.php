@@ -35,6 +35,14 @@ if (isset($_GET['idParametres'])) {
     $idParametres = $_GET['idParametres'];
 }
 
+if (isset($_GET['idGuide'])) {
+    $idGuide = $_GET['idGuide'];
+}
+
+if (isset($_GET['idDiapo'])) {
+    $idDiapo = $_GET['idDiapo'];
+}
+
 if (isset($_GET['failed'])) {
     $failed = $_GET['failed'];
 } else {
@@ -103,5 +111,32 @@ switch ($baseURL) {
     case "/cars-clash/admin/add-news":
         $controller = new GestionNewsController();
         $controller->showPageAddNews();
+        break;
+    case "/cars-clash/admin/guide-achat":
+        $controller = new GestionParamsController();
+        $controller->showPageGuideAchat();
+        break;
+    case "/cars-clash/admin/edit-guide":
+        $controller = new GestionParamsController();
+        $controller->showPageEditGuide($idGuide);
+        break;
+    case "/cars-clash/admin/add-guide":
+        $controller = new GestionParamsController();
+        $controller->showPageAddGuide();
+        break;
+
+    case "/cars-clash/admin/diaporama":
+        $controller = new GestionParamsController();
+        $controller->showPageDiaporama();
+        break;
+
+    case "/cars-clash/admin/edit-diaporama":
+        $controller = new GestionParamsController();
+        $controller->showPageEditDiaporama($idDiapo);
+        break;
+
+    case "/cars-clash/admin/add-diaporama":
+        $controller = new GestionParamsController();
+        $controller->showPageAddDiaporama();
         break;
 }

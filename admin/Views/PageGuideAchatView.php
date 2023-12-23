@@ -1,12 +1,13 @@
 <?php
-require_once 'Controllers/GestionNewsController.php';
-class PageNewsView extends GlobalView
+require_once 'Views/GlobalView.php';
+require_once 'Controllers/GestionParamsController.php';
+class PageGuideAchatView extends GlobalView
 {
 
     public function content()
     {
-        $controller = new GestionNewsController();
-        $allNews = $controller->getAllNews();
+        $controller = new GestionParamsController();
+        $allGuides = $controller->getAllGuides();
         ?>
 
 <body>
@@ -22,13 +23,13 @@ class PageNewsView extends GlobalView
         <a class="menu_item_link" href="./gestion-avis">Avis</a>
       </div>
       <div class="menu_item news">
-        <a class="menu_item_link actuel" href="./gestion-news">News</a>
+        <a class="menu_item_link " href="./gestion-news">News</a>
       </div>
       <div class="menu_item utilisateurs">
         <a class="menu_item_link" href="./gestion-utilisateurs">Utilisateurs</a>
       </div>
       <div class="menu_item parametres">
-        <a class="menu_item_link" href="./gestion-params">Paramètres</a>
+        <a class="menu_item_link actuel" href="./gestion-params">Paramètres</a>
       </div>
     </div>
 
@@ -36,13 +37,13 @@ class PageNewsView extends GlobalView
       <div class="marques_container">
         <div class="marques_container_add_button_container">
           <form action="./redirect.php" method="post">
-            <button type="submit" name="goto-ajouter-news"
+            <button type="submit" name="goto-ajouter-guide"
               class="marques_container_add_button bg-myprimary mt-2">Ajouter
-              News</button>
+              Guide d'achat</button>
           </form>
         </div>
         <div class="marques_container_table">
-          <div class="marques_container_table_title">Les News</div>
+          <div class="marques_container_table_title">Les Guides d'achats</div>
           <div class="marques_container_table_real_table">
             <table id="example" class="table table-striped">
               <thead>
@@ -50,32 +51,27 @@ class PageNewsView extends GlobalView
                   <th>ID</th>
                   <th>Titre</th>
                   <th>Contenu</th>
-                  <th>Image</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-foreach ($allNews as $news) {
+foreach ($allGuides as $guide) {
             ?>
                 <tr>
-                  <td><?php echo $news['ID_News'] ?></td>
-                  <td class="w-1/6"><?php echo $news['Titre'] ?></td>
-                  <td class="text-ellipsis w-2/6"><?php echo $news['Contenu'] ?></td>
-                  <td>
-                    <img class="max-h-24 mx-auto " src="/cars-clash/public/images/news<?php echo $news['Image'] ?>"
-                      alt="">
-                  </td>
+                  <td><?php echo $guide['ID_Guide'] ?></td>
+                  <td class="w-1/6"><?php echo $guide['Titre_guide_achat'] ?></td>
+                  <td class="text-ellipsis w-2/6"><?php echo $guide['Contenu_guide_achat'] ?></td>
                   <td class="actions_container">
                     <form class="d-inline-block" action="./redirect.php" method="POST">
-                      <input type="hidden" value="<?php echo $news['ID_News'] ?>" name="ID_News">
-                      <button type="submit" name="goto-modifier-news" title="modifier">
+                      <input type="hidden" value="<?php echo $guide['ID_Guide'] ?>" name="ID_Guide">
+                      <button type="submit" name="goto-modifier-guide" title="modifier">
                         <ion-icon class="modify-icon" name="create"></ion-icon>
                       </button>
                     </form>
                     <form class="d-inline-block" action="./redirect.php" method="POST">
-                      <input type="hidden" value="<?php echo $news['ID_News'] ?>" name="ID_News">
-                      <button type="submit" name="supprimer-news" title="supprimer">
+                      <input type="hidden" value="<?php echo $guide['ID_Guide'] ?>" name="ID_Guide">
+                      <button type="submit" name="supprimer-guide" title="supprimer">
                         <ion-icon class="delete-icon" name="trash-outline"></ion-icon>
                       </button>
                     </form>
@@ -95,7 +91,7 @@ foreach ($allNews as $news) {
 <?php
 }
 
-    public function showPageNews()
+    public function showPageGuideAchat()
     {
         $this->head();
         $this->header();
