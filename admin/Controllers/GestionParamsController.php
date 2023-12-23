@@ -163,43 +163,73 @@ class GestionParamsController
 
     public function showPageParams()
     {
-        $view = new PageParamsView();
-        $view->showPageParams();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageParamsView();
+            $view->showPageParams();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageGuideAchat()
     {
-        $view = new PageGuideAchatView();
-        $view->showPageGuideAchat();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageGuideAchatView();
+            $view->showPageGuideAchat();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageEditGuide($idGuide)
     {
-        $view = new PageEditGuideView();
-        $view->showPageEditGuide($idGuide);
+        if (isset($_SESSION['admin'])) {
+            $view = new PageEditGuideView();
+            $view->showPageEditGuide($idGuide);
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageAddGuide()
     {
-        $view = new PageAddGuideView();
-        $view->showPageAddGuide();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageAddGuideView();
+            $view->showPageAddGuide();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageDiaporama()
     {
-        $view = new PageDiaporamaView();
-        $view->showPageDiaporama();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageDiaporamaView();
+            $view->showPageDiaporama();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageEditDiaporama($idDiapo)
     {
-        $view = new PageEditDiaporamaView();
-        $view->showPageEditDiaporama($idDiapo);
+        if (isset($_SESSION['admin'])) {
+            $view = new PageEditDiaporamaView();
+            $view->showPageEditDiaporama($idDiapo);
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageAddDiaporama()
     {
-        $view = new PageAddDiaporamaView();
-        $view->showPageAddDiaporama();
+
+        if (isset($_SESSION['admin'])) {
+            $view = new PageAddDiaporamaView();
+            $view->showPageAddDiaporama();
+
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 }

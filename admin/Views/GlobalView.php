@@ -63,8 +63,12 @@ class GlobalView
       <img src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
     </a>
     <form class="form_dcnx" action="./redirect.php" method="post">
-      <button type="submit" class="deconnexion_btn" name="logout">
+      <!-- <button type="submit" class="deconnexion_btn" name="logout">
         Se déconnecter
+      </button> -->
+      <button type="submit" name="logout">
+        <ion-icon class="modify-icon text-red-600 size-8 p-3 " name="log-in-outline" title="se déconnecter">
+        </ion-icon>
       </button>
     </form>
   </div>
