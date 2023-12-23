@@ -96,4 +96,12 @@ switch ($baseURL) {
         $controller = new GestionVehiculesController();
         $controller->showPageAddVehicule();
         break;
+    case "/cars-clash/admin/edit-news":
+        $controller = new GestionNewsController();
+        $controller->showPageEditNews($idNews);
+        break;
+    case "/cars-clash/admin/add-news":
+        $controller = new GestionNewsController();
+        $controller->showPageAddNews();
+        break;
 }

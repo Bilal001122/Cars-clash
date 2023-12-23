@@ -19,6 +19,14 @@ class GestionAvisController
         header('Location: ./gestion-avis');
     }
 
+    public function handleRefuserAvis()
+    {
+        $idAvis = $_POST['ID_Avis'];
+        $model = new GestionAvisModel();
+        $model->refuserAvis($idAvis);
+        header('Location: ./gestion-avis');
+    }
+
     public function handleBloquerUserFromAvis()
     {
         $idUser = $_POST['ID_User'];
@@ -29,7 +37,11 @@ class GestionAvisController
 
     public function showPageAvis()
     {
-        $view = new PageAvisView();
-        $view->showPageAvis();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageAvisView();
+            $view->showPageAvis();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 }

@@ -4,6 +4,7 @@ require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionUtilisateursController.php';
 require_once 'Controllers/GestionAvisController.php';
+require_once 'Controllers/GestionNewsController.php';
 
 session_start();
 
@@ -94,4 +95,36 @@ if (isset($_POST['valider-commentaire'])) {
 if (isset($_POST['bloquer-user-from-avis'])) {
     $avisController = new GestionAvisController();
     $avisController->handleBloquerUserFromAvis();
+}
+
+if (isset($_POST['refuser-commentaire'])) {
+    $avisController = new GestionAvisController();
+    $avisController->handleRefuserAvis();
+}
+
+if (isset($_POST['goto-modifier-news'])) {
+    $avisController = new GestionNewsController();
+    $avisController->handleGotoEditNews();
+}
+
+if (isset($_POST['modifier-news'])) {
+    $idNews = $_POST['id-news'];
+    $avisController = new GestionNewsController();
+    $avisController->handleEditNews($idNews);
+}
+
+if (isset($_POST['supprimer-news'])) {
+    $idNews = $_POST['ID_News'];
+    $avisController = new GestionNewsController();
+    $avisController->handleDeleteNews($idNews);
+}
+
+if (isset($_POST['goto-ajouter-news'])) {
+    $avisController = new GestionNewsController();
+    $avisController->handleGotoAddNews();
+}
+
+if (isset($_POST['ajouter-news'])) {
+    $avisController = new GestionNewsController();
+    $avisController->handleAddNews();
 }

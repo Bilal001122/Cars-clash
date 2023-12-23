@@ -317,7 +317,7 @@ body {
 .marques_container_table_real_table {
   overflow-y: scroll;
   overflow-x: scroll;
-  height: 44rem;
+  height: 65vh;
   padding: 0.8rem 1.6rem;
 }
 
@@ -327,48 +327,6 @@ body {
   margin: 0 auto;
   color: #85a8f8;
 }
-
-/* .form-select {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
-  padding: 0 1.8rem;
-  margin: 0 0.4rem;
-}
-
-.form-control {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
-  padding: 0 1.2rem;
-  margin: 0 0.4rem;
-}
-
-.row {
-  margin-bottom: 1.2rem;
-  border-radius: 20px !important;
-}
-
-.dataTables_filter {
-  padding: 0.4rem;
-}
-
-.pagination li a {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 1.6rem;
-} */
-
-/* .dataTables_wrapper {
-  padding-top: 1.6rem;
-} */
 
 .dataTables_length {
   display: inline-block;

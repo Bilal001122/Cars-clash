@@ -21,8 +21,8 @@ class PageLoginController
 
     public function handleLogout()
     {
-        session_start();
         unset($_SESSION['admin']);
+        session_start();
         session_destroy();
         header('Location: /cars-clash/admin/');
         exit();

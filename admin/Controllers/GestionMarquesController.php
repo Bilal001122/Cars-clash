@@ -118,19 +118,31 @@ class GestionMarquesController
 
     public function showPageMarques()
     {
-        $view = new PageMarquesView();
-        $view->showPageMarques();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageMarquesView();
+            $view->showPageMarques();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageEditMarque($idMarque)
     {
-        $view = new PageEditMarqueView();
-        $view->showPageEditMarque($idMarque);
+        if (isset($_SESSION['admin'])) {
+            $view = new PageEditMarqueView();
+            $view->showPageEditMarque($idMarque);
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 
     public function showPageAddMarque()
     {
-        $view = new PageAddMarqueView();
-        $view->showPageAddMarque();
+        if (isset($_SESSION['admin'])) {
+            $view = new PageAddMarqueView();
+            $view->showPageAddMarque();
+        } else {
+            header('Location: /cars-clash/admin/login');
+        }
     }
 }

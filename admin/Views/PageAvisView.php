@@ -51,8 +51,7 @@ class PageAvisView extends GlobalView
               </thead>
               <tbody>
                 <?php
-
-        foreach ($allAvis as $avis) {
+foreach ($allAvis as $avis) {
             ?>
                 <tr>
                   <td><?php echo $avis['ID_Avis'] ?></td>
@@ -69,6 +68,12 @@ class PageAvisView extends GlobalView
                       </button>
                     </form>
                     <form class="d-inline-block" action="./redirect.php" method="POST">
+                      <input type="hidden" value="<?php echo $avis['ID_Avis'] ?>" name="ID_Avis">
+                      <button type="submit" name="refuser-commentaire" title="refuser commentaire">
+                        <ion-icon class="modify-icon text-red-600" name="archive-outline"></ion-icon>
+                      </button>
+                    </form>
+                    <form class="d-inline-block" action="./redirect.php" method="POST">
                       <input type="hidden" value="<?php echo $avis['ID_Utilisateur'] ?>" name="ID_User">
                       <button type="submit" name="bloquer-user-from-avis" title="bloquer utilisatuer">
                         <ion-icon class="delete-icon" name="alert-circle-outline"></ion-icon>
@@ -78,7 +83,6 @@ class PageAvisView extends GlobalView
                 </tr><?php
 }
         ?>
-
               </tbody>
 
             </table>

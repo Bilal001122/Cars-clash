@@ -46,4 +46,18 @@ class GestionAVisModel extends ConnexionBdd
         }
     }
 
+    public function refuserAvis($idAvis)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "UPDATE avis SET Statut = 'Non valide' WHERE ID_Avis = :idAvis";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idAvis', $idAvis);
+            $requete->execute();
+            $this->deconnexion($database);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }
