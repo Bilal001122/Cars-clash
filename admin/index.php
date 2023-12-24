@@ -1,5 +1,5 @@
 <?php
-require_once 'Controllers/PageLoginController.php';
+require_once 'Controllers/GestionLoginController.php';
 require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionAvisController.php';
@@ -51,11 +51,11 @@ if (isset($_GET['failed'])) {
 
 switch ($baseURL) {
     case "/cars-clash/admin/":
-        $controller = new PageLoginController();
+        $controller = new GestionLoginController();
         $controller->showPageLogin($failed);
         break;
     case "/cars-clash/admin/login":
-        $controller = new PageLoginController();
+        $controller = new GestionLoginController();
         $controller->showPageLogin($failed);
         break;
     case "/cars-clash/admin/gestion-vehicules":

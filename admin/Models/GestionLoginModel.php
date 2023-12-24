@@ -1,6 +1,6 @@
 <?php
 require_once 'Models/ConnexionBdd.php';
-class PageLoginModel extends ConnexionBdd
+class GestionLoginModel extends ConnexionBdd
 {
     public function login($email, $password)
     {

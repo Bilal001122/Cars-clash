@@ -26,7 +26,7 @@ if ($failed) {
         ?>
   <form class="login_container_form" action='./redirect.php' method='post'>
     <label for="email">E-mail</label>
-    <input id="email" type='text' name='email' placeholder='e-mail' required>
+    <input id="email" type='email' name='email' placeholder='e-mail' required>
     <label for="password">Mot de passe</label>
     <input id="password" type='password' name='password' placeholder='mot de passe' required>
     <input type='submit' value='Se connecter' name="login">

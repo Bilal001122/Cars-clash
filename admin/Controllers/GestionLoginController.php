@@ -1,13 +1,13 @@
 <?php
-require_once 'Models/PageLoginModel.php';
+require_once 'Models/GestionLoginModel.php';
 require_once 'Views/PageLoginView.php';
-class PageLoginController
+class GestionLoginController
 {
     public function handleLogin()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $model = new PageLoginModel();
+        $model = new GestionLoginModel();
         $admin = $model->login($email, $password);
         if ($admin) {
             session_start();

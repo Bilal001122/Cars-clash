@@ -1,5 +1,5 @@
 <?php
-require_once 'Controllers/PageLoginController.php';
+require_once 'Controllers/GestionLoginController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionVehiculesController.php';
 require_once 'Controllers/GestionUtilisateursController.php';
@@ -10,12 +10,12 @@ require_once 'Controllers/GestionParamsController.php';
 session_start();
 
 if (isset($_POST['login'])) {
-    $loginController = new PageLoginController();
+    $loginController = new GestionLoginController();
     $loginController->handleLogin();
 }
 
 if (isset($_POST['logout'])) {
-    $loginController = new PageLoginController();
+    $loginController = new GestionLoginController();
     $loginController->handleLogout();
 }
 
