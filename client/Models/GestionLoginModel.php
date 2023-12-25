@@ -11,7 +11,7 @@ class GestionLoginModel extends ConnexionBdd
         if ($requete->rowCount() == 1) {
             $result = $requete->fetch(PDO::FETCH_ASSOC);
             $hashedPassword = hash('sha256', $password);
-            if ($result['Mot_de_passe'] === $hashedPassword) {
+            if ($result['Mot_de_passe'] === $hashedPassword && $result['Status_de_validation'] === 'Valide' && $result['bloque'] === 'Non') {
                 $this->deconnexion($database);
                 return $result;
             }

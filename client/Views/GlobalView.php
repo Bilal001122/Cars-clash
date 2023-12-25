@@ -26,7 +26,7 @@ class GlobalView
   <script defer src="/cars-clash/public/jquery.min.js"></script>
   <script defer src="/cars-clash/public/jquery.dataTables.min.js"></script>
   <script defer src="/cars-clash/public/jquery.dataTables.min.js"></script>
-  <script defer src="/cars-clash/public/client/client.js"></script>
+  <script defer src="/cars-clash/client/client.js"></script>
   <script>
   tailwind.config = {
     theme: {
@@ -53,7 +53,7 @@ class GlobalView
 <header class="header">
   <div class="header_logo">
     <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
-    <p class="header_logo_text">CARS CLASH</p>
+    <p class="animate-bounce header_logo_text">CARS CLASH</p>
   </div>
   <div class="social_links">
     <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
@@ -89,6 +89,47 @@ class GlobalView
     </form>
   </div>
 </header>
+<?php
+}
+
+    public function footer()
+    {
+        ?>
+<footer class="footer flex flex-col bg-white p-10 mt-20">
+  <div class="grid grid-cols-5">
+    <div class="header_logo flex flex-col col-span-2">
+      <div class="flex justify-start items-center">
+        <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
+        <p class=" header_logo_text">CARS CLASH</p>
+      </div>
+      <div>
+        <p>Facilitez vos choix automobiles avec Cars Clash, où la comparaison devient simple, pour des ventes plus
+          performantes et sans tracas.</p>
+      </div>
+    </div>
+    <div>
+      <p class="font-semibold hover:underline transition-all duration-300 cursor-pointer">À propos</p>
+    </div>
+    <div>
+      <p class="font-semibold hover:underline transition-all duration-300 cursor-pointer">Communauté</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <p class="font-semibold mb-10 hover:underline transition-all duration-300 cursor-pointer">Réseaux sociaux</p>
+      <p class="hover:underline transition-all duration-300 cursor-pointer">Facebook</p>
+      <p class="hover:underline transition-all duration-300 cursor-pointer">LinkedIn</p>
+      <p class="hover:underline transition-all duration-300 cursor-pointer">Twitter</p>
+    </div>
+  </div>
+  <div class="flex pt-20 justify-between">
+    <p class="text-center font-semibold">© 2023 Cars Clash.
+      Tous droits réservés.</p>
+    <div class="flex gap-4">
+      <p class="font-semibold hover:underline transition-all duration-300 cursor-pointer">Politique de confidentialité
+      </p>
+      <p class="font-semibold hover:underline transition-all duration-300 cursor-pointer">Termes & conditions</p>
+    </div>
+  </div>
+</footer>
 <?php
 }
 

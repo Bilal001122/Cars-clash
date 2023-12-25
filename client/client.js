@@ -1,6 +1,6 @@
 "use strict";
 
-const slides = document.querySelectorAll(".diaporama");
+let slides = document.querySelectorAll(".diaporama");
 let currentSlide = 0;
 const slideInterval = 5000;
 

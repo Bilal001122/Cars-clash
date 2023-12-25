@@ -18,6 +18,25 @@ class GestionAccueilController
         return $diaporama;
     }
 
+    public function getFiveMarques()
+    {
+        $model = new GestionAccueilModel();
+        $marques = $model->getFiveMarques();
+        return $marques;
+    }
+
+    public function getMarques()
+    {
+        $model = new GestionAccueilModel();
+        $marques = $model->getMarques();
+        return $marques;
+    }
+
+    public function handleGotoPageMarque($idMarque, $idClient)
+    {
+        header('Location: /cars-clash/client/marques?idClient=' . $idClient . '&idMarque=' . $idMarque . '');
+    }
+
     public function showPageAccueil()
     {
         if (isset($_SESSION['client'])) {
