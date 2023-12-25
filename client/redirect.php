@@ -47,14 +47,42 @@ if (isset($_POST['add-to-fav'])) {
     $idClient = $_POST['idClient'];
     $idVehicule = $_POST['idVehicule'];
     $idMarque = $_POST['idMarque'];
+    $bool = $_POST['goto-cars-details'];
     $marqueController = new GestionMarquesController();
-    $marqueController->handleAddToFav($idClient, $idVehicule, $idMarque);
+    $marqueController->handleAddToFav($idClient, $idVehicule, $idMarque, $bool);
 }
 
 if (isset($_POST['remove-from-fav'])) {
     $idClient = $_POST['idClient'];
     $idVehicule = $_POST['idVehicule'];
     $idMarque = $_POST['idMarque'];
+    $bool = $_POST['goto-cars-details'];
     $marqueController = new GestionMarquesController();
-    $marqueController->handleRemoveFromFav($idClient, $idVehicule, $idMarque);
+    $marqueController->handleRemoveFromFav($idClient, $idVehicule, $idMarque, $bool);
+}
+
+if (isset($_POST['show-car-details'])) {
+    $idClient = $_POST['idClient'];
+    $idVehicule = $_POST['idVehicule'];
+    $idMarque = $_POST['idMarque'];
+    $marqueController = new GestionMarquesController();
+    $marqueController->handleShowCarDetails($idClient, $idVehicule, $idMarque);
+}
+
+if (isset($_POST['add-note'])) {
+    $idClient = $_POST['idClient'];
+    $idVehicule = $_POST['idVehicule'];
+    $idMarque = $_POST['idMarque'];
+    $note = $_POST['note'];
+    $marqueController = new GestionMarquesController();
+    $marqueController->handleAddNoteToCar($idClient, $idVehicule, $idMarque, $note);
+}
+
+if (isset($_POST['add-avis'])) {
+    $idClient = $_POST['idClient'];
+    $idVehicule = $_POST['idVehicule'];
+    $idMarque = $_POST['idMarque'];
+    $avis = $_POST['avis'];
+    $marqueController = new GestionMarquesController();
+    $marqueController->handleAddAvisToCar($idClient, $idVehicule, $idMarque, $avis);
 }

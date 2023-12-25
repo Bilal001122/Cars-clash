@@ -2,7 +2,6 @@
 
 require_once 'Views/GlobalView.php';
 require_once 'Views/MenuView.php';
-require_once 'Controllers/GestionAccueilController.php';
 require_once 'Controllers/GestionNewsController.php';
 
 class PageNewsView extends GlobalView
@@ -10,25 +9,11 @@ class PageNewsView extends GlobalView
 
     public function content()
     {
-        $accueilController = new GestionAccueilController();
         $newsController = new GestionNewsController();
         $menuView = new MenuView();
-        $allDiaporamas = $accueilController->getAllDiaporama();
         $allNews = $newsController->getAllNews();
         ?>
 <div class="body w-11/12 mx-auto my-0 mb-96">
-
-  <?php
-foreach ($allDiaporamas as $diaporama) {
-            ?>
-  <div class="diaporama mt-16 drop-shadow-2xl hover:cursor-pointer transition-all duration-1000">
-    <img class="rounded-2xl transition-all duration-300"
-      src="/cars-clash/public/images/diaporamas<?php echo $diaporama['Chemin_Image'] ?>" alt=""
-      data-pointer="<?php echo $diaporama['Lien'] ?>" />
-  </div>
-  <?php
-}
-        ?>
   <?php
 $menuView->content(1);
         ?>

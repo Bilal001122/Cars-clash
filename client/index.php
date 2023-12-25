@@ -15,6 +15,14 @@ if (isset($_GET['idMarque'])) {
     $idMarque = $_GET['idMarque'];
 }
 
+if (isset($_GET['idVehicule'])) {
+    $idVehicule = $_GET['idVehicule'];
+}
+
+if (isset($_GET['idClient'])) {
+    $idClient = $_GET['idClient'];
+}
+
 if (isset($_GET['failed'])) {
     $failed = $_GET['failed'];
 } else {
@@ -52,6 +60,11 @@ switch ($baseURL) {
     case '/cars-clash/client/news-odd':
         $controller = new GestionNewsController();
         $controller->showPageNewsOdd($idNews);
+        break;
+
+    case '/cars-clash/client/car-details':
+        $controller = new GestionMarquesController();
+        $controller->showPageCarDetails($idClient, $idMarque, $idVehicule);
         break;
 
 }

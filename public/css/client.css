@@ -245,11 +245,14 @@ body {
 .menu div {
   cursor: pointer;
   flex-grow: 1;
-  padding: 1.2rem 0;
   font-weight: 600;
   color: var(--primary-color);
   text-align: center;
   transition: all 0.3s ease;
+}
+
+.menu div button {
+  padding: 1.2rem 0;
 }
 
 .menu div:hover {
@@ -263,4 +266,10 @@ body {
 
 .marque img {
   height: 15vh;
+}
+
+.image_for_details_screen {
+  height: 30vh;
+  width: 30%;
+  object-fit: cover;
 }

@@ -3,13 +3,11 @@ require_once 'Views/GlobalView.php';
 require_once 'Views/MenuView.php';
 require_once 'Views/CarCardView.php';
 require_once 'Controllers/GestionMarquesController.php';
-require_once 'Controllers/GestionAccueilController.php';
 class PageMarqueView extends GlobalView
 {
     public function content($idMarque)
     {
-        $accueilController = new GestionAccueilController();
-        $allDiaporamas = $accueilController->getAllDiaporama();
+
         $marqueController = new GestionMarquesController();
         $marque = $marqueController->getMarque($idMarque);
         $allVehicules = $marqueController->getAllVehicules($idMarque);
@@ -20,21 +18,8 @@ class PageMarqueView extends GlobalView
         ?>
 <div class="body w-11/12 mx-auto my-0">
   <?php
-foreach ($allDiaporamas as $diaporama) {
-            ?>
-  <div class="diaporama mt-16 drop-shadow-2xl hover:cursor-pointer transition-all duration-1000">
-    <img class="rounded-2xl transition-all duration-300"
-      src="/cars-clash/public/images/diaporamas<?php echo $diaporama['Chemin_Image'] ?>" alt=""
-      data-pointer="<?php echo $diaporama['Lien'] ?>" />
-  </div>
-  <?php
-}
-        ?>
-  <?php
 $menuView->content(3);
         ?>
-
-
   <div class=" marque flex justify-center items-center bg-white mt-32 p-10 rounded-2xl drop-shadow-2xl">
     <div class="px-10 flex justify-center items-center">
       <img src="/cars-clash/public/images/marques<?php echo "{$marque["Image_marque"]}" ?>" alt="">

@@ -1,6 +1,7 @@
 <?php
 require_once 'Views/PageMarqueView.php';
 require_once 'Views/PageMarquesView.php';
+require_once 'Views/PageCarDetailsView.php';
 require_once 'Models/GestionMarquesModel.php';
 
 class GestionMarquesController
@@ -10,6 +11,13 @@ class GestionMarquesController
     {
         $model = new GestionMarquesModel();
         $result = $model->getMarque($idMarque);
+        return $result;
+    }
+
+    public function getVehicule($idVehicule)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getVehicule($idVehicule);
         return $result;
     }
 
@@ -27,12 +35,6 @@ class GestionMarquesController
         return $result;
     }
 
-    public function showPageMarque($idMarque)
-    {
-        $view = new PageMarqueView();
-        $view->showPageMarque($idMarque);
-    }
-
     public function verifyIfFavoris($idVehicule)
     {
         $idClient = $_GET['idClient'];
@@ -41,23 +43,62 @@ class GestionMarquesController
         return $result;
     }
 
-    public function handleAddToFav($idClient, $idVehicule, $idMarque)
+    public function handleAddToFav($idClient, $idVehicule, $idMarque, $bool = 0)
     {
         $model = new GestionMarquesModel();
         $model->handleAddToFav($idClient, $idVehicule);
-        header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+        if ($bool == 1) {
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        } else {
+            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+        }
     }
 
-    public function handleRemoveFromFav($idClient, $idVehicule, $idMarque)
+    public function handleRemoveFromFav($idClient, $idVehicule, $idMarque, $bool = 0)
     {
         $model = new GestionMarquesModel();
         $model->handleRemoveFromFav($idClient, $idVehicule);
-        header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+        if ($bool == 1) {
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        } else {
+            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+        }
+    }
+
+    public function handleShowCarDetails($idClient, $idVehicule, $idMarque)
+    {
+        header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+    }
+
+    public function handleAddNoteToCar($idClient, $idVehicule, $idMarque, $note)
+    {
+        $model = new GestionMarquesModel();
+        $model->handleAddNoteToCar($idClient, $idVehicule, $note);
+        header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+    }
+
+    public function handleAddAvisToCar($idClient, $idVehicule, $idMarque, $avis)
+    {
+        $model = new GestionMarquesModel();
+        $model->handleAddAvisToCar($idClient, $idVehicule, $avis);
+        header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
     }
 
     public function showPageMarques()
     {
         $view = new PageMarquesView();
         $view->showPageMarques();
+    }
+
+    public function showPageMarque($idMarque)
+    {
+        $view = new PageMarqueView();
+        $view->showPageMarque($idMarque);
+    }
+
+    public function showPageCarDetails($idClient, $idMarque, $idVehicule)
+    {
+        $view = new PageCarDetailsView();
+        $view->showPageCarDetails($idClient, $idMarque, $idVehicule);
     }
 }
