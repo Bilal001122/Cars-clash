@@ -71,5 +71,10 @@ switch ($baseURL) {
         $controller = new GestionAvisController();
         $controller->showPageAvis();
         break;
+    
+    case '/cars-clash/client/guide-achat':
+        $controller = new GestionGuideAchatController();
+        $controller->showPageGuideAchat();
+        break;
 
 }

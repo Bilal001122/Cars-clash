@@ -4,7 +4,7 @@ require_once "Controllers/GestionAvisController.php";
 class CarCardDetailsView
 {
 
-    public function content($vehicule)
+    public function content($vehicule, $boolIsFromAvis = false)
     {
         $marqueController = new GestionMarquesController();
         $fav = $marqueController->verifyIfFavoris($vehicule["ID_Vehicule"]);
@@ -18,6 +18,11 @@ class CarCardDetailsView
 <div
   class=" card_details_for_car grid grid-cols-2 grow place-content-center gap-12 bg-white p-20 rounded-2xl drop-shadow-2xl relative">
 
+  <?php
+ 
+ if(!isset($_GET['isFromAvis']))
+ {
+?>
   <div class="absolute top-7 right-7">
     <?php if ($fav) {
             ?>
@@ -48,11 +53,28 @@ class CarCardDetailsView
     <?php
 }?>
   </div>
+  <?php
+ }
+ 
+ ?>
 
   <div class="flex justify-start items-center">
     <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Modèle:</p>
     <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $vehicule['Modele'] ?></p>
   </div>
+  <?php if ($boolIsFromAvis) {
+            ?>
+  <form class="flex justify-end items-center" action="./redirect.php" method="post">
+    <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
+    <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+    <input type="hidden" value="<?php echo $_GET['idMarque'] ?>" name="idMarque">
+    <button class=" hover:scale-105 transition-all duration-300 px-4 py-3 bg-myprimary text-white rounded-xl"
+      type="submit" name="show-car-details">Voir
+      détails</button>
+  </form>
+  <?php
+} else {
+            ?>
   <div class="flex justify-start items-center">
     <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Version:</p>
     <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $vehicule['Version'] ?></p>
@@ -85,6 +107,8 @@ class CarCardDetailsView
     <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Note moyenne:</p>
     <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $vehiculeAvisMoyenne['moyenne'] ?> / 10</p>
   </div>
+  <?php
+}?>
   <?php
 }
 

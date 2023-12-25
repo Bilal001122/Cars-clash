@@ -94,3 +94,9 @@ if (isset($_POST['goto-page-avis'])) {
     $accueilController = new GestionAccueilController();
     $accueilController->handleGotoPageAvis($idClient);
 }
+
+if (isset($_POST['goto-page-guide-achat'])) {
+    $idClient = $_POST['idClient'];
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageGuideAchat($idClient);
+}

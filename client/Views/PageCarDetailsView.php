@@ -29,7 +29,11 @@ class PageCarDetailsView extends GlobalView
   <div class="flex flex-col gap-14">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Description</p>
     <?php
-$carCardDetailsView->content($vehicule);
+if (isset($_GET['isFromAvis'])) {
+            $carCardDetailsView->content($vehicule, true);
+        } else {
+            $carCardDetailsView->content($vehicule);
+        }
         ?>
   </div>
   <!-- Donnez note et avis -->
@@ -80,6 +84,10 @@ $carCardDetailsView->content($vehicule);
   </div>
   <!-- Fin donnez note et avis -->
 
+  <?php
+
+        if (!isset($_GET['isFromAvis'])) {
+            ?>
   <!-- Les 3 avis les plus apprecis -->
   <div class="flex flex-col gap-14">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Les 3 avis les plus apprécis
@@ -92,6 +100,9 @@ $carCardDetailsView->content($vehicule);
     <?php }?>
   </div>
   <!-- Fin Les 3 avis les plus apprecis  -->
+  <?php
+}
+        ?>
 
   <!-- Tous les avis -->
 
