@@ -45,7 +45,6 @@ class PageAvisView extends GlobalView
                   <th>Véhicule avisé</th>
                   <th>Commentaire</th>
                   <th>Status</th>
-                  <th>Note</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -59,7 +58,6 @@ foreach ($allAvis as $avis) {
                   <td><?php echo $avis['Modele'] ?></td>
                   <td class="w-96"><?php echo $avis['Commentaire'] ?></td>
                   <td><?php echo $avis['Statut'] ?></td>
-                  <td><?php echo $avis['Note'] ?></td>
                   <td class="actions_container">
                     <form class="d-inline-block" action="./redirect.php" method="POST">
                       <input type="hidden" value="<?php echo $avis['ID_Avis'] ?>" name="ID_Avis">

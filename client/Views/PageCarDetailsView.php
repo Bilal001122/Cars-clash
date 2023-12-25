@@ -61,7 +61,7 @@ $carCardDetailsView->content($vehicule);
             <label class="font-bold py-4" for="avis">Avis</label>
             <input placeholder="Avis"
               class="p-3 w-12/12 bg-myaccent bg-opacity-5 rounded-xl ring-2 ring-gray-300 focus:outline-none focus:ring-myprimary focus:ring-2"
-              type="text" name="avis" id="avis">
+              type="text" name="avis" id="avis" required>
           </div>
         </div>
         <div class="w-full hover:scale-125 transition-all duration-300 col-span-1 place-self-end scale-110">

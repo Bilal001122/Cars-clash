@@ -1,6 +1,6 @@
 <?php
 require_once "Controllers/GestionMarquesController.php";
-
+require_once "Controllers/GestionAvisController.php";
 class CarCardDetailsView
 {
 
@@ -8,6 +8,8 @@ class CarCardDetailsView
     {
         $marqueController = new GestionMarquesController();
         $fav = $marqueController->verifyIfFavoris($vehicule["ID_Vehicule"]);
+        $avisController = new GestionAvisController();
+        $vehiculeAvisMoyenne = $avisController->getAvisMoyenne($vehicule["ID_Vehicule"]);
         ?>
 <div class="flex py-20 justify-center bg-myprimary bg-opacity-60 rounded-2xl drop-shadow-2xl">
   <img class="image_for_details_screen"
@@ -78,6 +80,10 @@ class CarCardDetailsView
   <div class="flex justify-start items-center">
     <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Prix:</p>
     <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $vehicule['Prix'] ?>$</p>
+  </div>
+  <div class="flex justify-start items-center">
+    <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Note moyenne:</p>
+    <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $vehiculeAvisMoyenne['moyenne'] ?> / 10</p>
   </div>
   <?php
 }

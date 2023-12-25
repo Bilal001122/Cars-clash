@@ -11,4 +11,11 @@ class GestionAvisController
         return $result;
     }
 
+    public function getAvisMoyenne($idVehicule)
+    {
+        $model = new GestionAvisModel();
+        $result = $model->getAvisMoyenne($idVehicule);
+        return $result;
+    }
+
 }
