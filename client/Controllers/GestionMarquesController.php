@@ -33,6 +33,28 @@ class GestionMarquesController
         $view->showPageMarque($idMarque);
     }
 
+    public function verifyIfFavoris($idVehicule)
+    {
+        $idClient = $_GET['idClient'];
+        $model = new GestionMarquesModel();
+        $result = $model->verifyIfFavoris($idVehicule, $idClient);
+        return $result;
+    }
+
+    public function handleAddToFav($idClient, $idVehicule, $idMarque)
+    {
+        $model = new GestionMarquesModel();
+        $model->handleAddToFav($idClient, $idVehicule);
+        header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+    }
+
+    public function handleRemoveFromFav($idClient, $idVehicule, $idMarque)
+    {
+        $model = new GestionMarquesModel();
+        $model->handleRemoveFromFav($idClient, $idVehicule);
+        header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+    }
+
     public function showPageMarques()
     {
         $view = new PageMarquesView();

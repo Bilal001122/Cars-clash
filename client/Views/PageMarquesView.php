@@ -1,5 +1,6 @@
 <?php
 require_once 'Views/GlobalView.php';
+require_once 'Views/MenuView.php';
 require_once 'Controllers/GestionAccueilController.php';
 class PageMarquesView extends GlobalView
 {
@@ -9,6 +10,7 @@ class PageMarquesView extends GlobalView
         $controller = new GestionAccueilController();
         $allDiaporamas = $controller->getAllDiaporama();
         $allMarques = $controller->getMarques();
+        $menuView = new MenuView();
         ?>
 <div class="body w-11/12 mx-auto my-0 mb-96">
 
@@ -23,60 +25,9 @@ foreach ($allDiaporamas as $diaporama) {
   <?php
 }
         ?>
-  <div class="menu flex justify-around mt-12 bg-white rounded-xl drop-shadow-2xl overflow-hidden">
-    <div class="news">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-        <button name="goto-page-news">
-          News
-        </button>
-      </form>
-    </div>
-    <div class="comparateur">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button name="goto-page-comparateur">
-          Comparateur
-        </button>
-      </form>
-    </div>
-    <div class="marques bg-myprimary text-white">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-        <button class="w-full" name="goto-page-marques">
-          Marques
-        </button>
-      </form>
-    </div>
-    <div class="avis">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button name="goto-page-avis">
-          Avis
-        </button>
-      </form>
-    </div>
-    <div class="guide_achats">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button name="goto-page-guide-achat">
-          Guide d'achats
-        </button>
-      </form>
-    </div>
-    <div class="contacts">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button name="goto-page-contacts">
-          Contacts
-        </button>
-      </form>
-    </div>
-  </div>
+  <?php
+$menuView->content(3);
+        ?>
 
   <section class="flex-col items-center justify-center mt-40">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Marques</p>

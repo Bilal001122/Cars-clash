@@ -1,5 +1,6 @@
 <?php
 require_once 'GlobalView.php';
+require_once 'MenuView.php';
 require_once 'Controllers/GestionAccueilController.php';
 require_once 'Views/FormComparView.php';
 class PageAccueilView extends GlobalView
@@ -12,6 +13,7 @@ class PageAccueilView extends GlobalView
         $allDiaporamas = $controller->getAllDiaporama();
         $fiveMarques = $controller->getFiveMarques();
         $marques = $controller->getMarques();
+        $menuView = new MenuView();
         ?>
 <div class="body w-11/12 mx-auto my-0">
   <?php
@@ -25,21 +27,9 @@ foreach ($allDiaporamas as $diaporama) {
   <?php
 }
         ?>
-  <div class="menu flex justify-around mt-12 bg-white rounded-xl drop-shadow-2xl overflow-hidden">
-    <div class="news">News</div>
-    <div class="comparateur">Comparateur</div>
-    <div class="marques">
-      <form action="./redirect.php" method="post">
-      <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>"" >
-        <button name="goto-page-marques">
-          Marques
-        </button>
-      </form>
-    </div>
-    <div class="avis">Avis</div>
-    <div class="guide_achats">Guide d'achats</div>
-    <div class="contacts">Contacts</div>
-  </div>
+  <?php
+$menuView->content(0);
+        ?>
 
   <section class="principales_marques flex-col items-center justify-center mt-40">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Les principales marques</p>

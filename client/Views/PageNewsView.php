@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Views/GlobalView.php';
+require_once 'Views/MenuView.php';
 require_once 'Controllers/GestionAccueilController.php';
 require_once 'Controllers/GestionNewsController.php';
 
@@ -11,6 +12,7 @@ class PageNewsView extends GlobalView
     {
         $accueilController = new GestionAccueilController();
         $newsController = new GestionNewsController();
+        $menuView = new MenuView();
         $allDiaporamas = $accueilController->getAllDiaporama();
         $allNews = $newsController->getAllNews();
         ?>
@@ -27,59 +29,9 @@ foreach ($allDiaporamas as $diaporama) {
   <?php
 }
         ?>
-  <div class="menu flex justify-around mt-12 bg-white rounded-xl drop-shadow-2xl overflow-hidden">
-    <div class="news bg-myprimary text-white">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-        <button class="w-full" name="goto-page-news">
-          News
-        </button>
-      </form>
-    </div>
-    <div class="comparateur">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button class="w-full" name="goto-page-comparateur">
-          Comparateur
-        </button>
-      </form>
-    </div>
-    <div class="marques ">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-        <button class="w-full" name="goto-page-marques">
-          Marques
-        </button>
-      </form>
-    </div>
-    <div class="avis">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button class="w-full" name="goto-page-avis">
-          Avis
-        </button>
-      </form>
-    </div>
-    <div class="guide_achats">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-
-        <button class="w-full" name="goto-page-guide-achat">
-          Guide d'achats
-        </button>
-      </form>
-    </div>
-    <div class="contacts">
-      <form action="./redirect.php" method="post">
-        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-        <button class="w-full" name="goto-page-contacts">
-          Contacts
-        </button>
-      </form>
-    </div>
-  </div>
+  <?php
+$menuView->content(1);
+        ?>
 
   <section class="news flex-col items-center justify-center mt-40">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">News</p>
