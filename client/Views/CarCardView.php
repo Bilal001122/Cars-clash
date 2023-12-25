@@ -43,6 +43,12 @@ class CarCardView
       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
       <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
       <input type="hidden" value="<?php echo $_GET['idMarque'] ?>" name="idMarque">
+      <?php
+if (isset($_GET['isFromAvis'])) {
+            ?>
+      <input type="hidden" value="<?php echo $_GET['isFromAvis'] ?>" name="isFromAvis">
+      <?php
+}?>
       <button class=" hover:scale-105 transition-all duration-300 px-4 py-3 bg-myprimary text-white rounded-xl"
         type="submit" name="show-car-details">Voir
         détails</button>

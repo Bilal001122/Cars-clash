@@ -65,9 +65,13 @@ class GestionMarquesController
         }
     }
 
-    public function handleShowCarDetails($idClient, $idVehicule, $idMarque)
+    public function handleShowCarDetails($idClient, $idVehicule, $idMarque, $isFromAvis)
     {
-        header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        if ($isFromAvis == "true") {
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule&isFromAvis=$isFromAvis");
+        } else {
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        }
     }
 
     public function handleAddNoteToCar($idClient, $idVehicule, $idMarque, $note)

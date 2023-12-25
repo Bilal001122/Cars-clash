@@ -18,7 +18,11 @@ class PageMarqueView extends GlobalView
         ?>
 <div class="body w-11/12 mx-auto my-0">
   <?php
-$menuView->content(3);
+if (isset($_GET['isFromAvis'])) {
+            $menuView->content(4);
+        } else {
+            $menuView->content(3);
+        }
         ?>
   <div class=" marque flex justify-center items-center bg-white mt-32 p-10 rounded-2xl drop-shadow-2xl">
     <div class="px-10 flex justify-center items-center">
@@ -57,7 +61,7 @@ $menuView->content(3);
   <div class="all_vehicules flex flex-col mt-44">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Touts les voitures</p>
     <div class="grid grid-cols-4 gap-10">
-      <?php foreach ($fourVehicules as $vehicule) {
+      <?php foreach ($allVehicules as $vehicule) {
             $cardView->content($vehicule);
         }?>
     </div>

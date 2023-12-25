@@ -20,8 +20,9 @@ if (isset($_POST['logout'])) {
 if (isset($_POST['goto-page-marque'])) {
     $idMarque = $_POST['idMarque'];
     $idClient = $_POST['idClient'];
+    $isFromAvis = $_POST['isFromAvis'];
     $accueilController = new GestionAccueilController();
-    $accueilController->handleGotoPageMarque($idMarque, $idClient);
+    $accueilController->handleGotoPageMarque($idMarque, $idClient, $isFromAvis);
 }
 
 if (isset($_POST['goto-page-marques'])) {
@@ -65,8 +66,9 @@ if (isset($_POST['show-car-details'])) {
     $idClient = $_POST['idClient'];
     $idVehicule = $_POST['idVehicule'];
     $idMarque = $_POST['idMarque'];
+    $isFromAvis = $_POST['isFromAvis'];
     $marqueController = new GestionMarquesController();
-    $marqueController->handleShowCarDetails($idClient, $idVehicule, $idMarque);
+    $marqueController->handleShowCarDetails($idClient, $idVehicule, $idMarque, $isFromAvis);
 }
 
 if (isset($_POST['add-note'])) {
@@ -85,4 +87,10 @@ if (isset($_POST['add-avis'])) {
     $avis = $_POST['avis'];
     $marqueController = new GestionMarquesController();
     $marqueController->handleAddAvisToCar($idClient, $idVehicule, $idMarque, $avis);
+}
+
+if (isset($_POST['goto-page-avis'])) {
+    $idClient = $_POST['idClient'];
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageAvis($idClient);
 }

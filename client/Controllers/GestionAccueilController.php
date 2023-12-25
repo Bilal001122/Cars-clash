@@ -32,9 +32,13 @@ class GestionAccueilController
         return $marques;
     }
 
-    public function handleGotoPageMarque($idMarque, $idClient)
+    public function handleGotoPageMarque($idMarque, $idClient, $isFromAvis)
     {
-        header('Location: /cars-clash/client/marque?idClient=' . $idClient . '&idMarque=' . $idMarque . '');
+        if ($isFromAvis == "true") {
+            header('Location: /cars-clash/client/marque?idClient=' . $idClient . '&idMarque=' . $idMarque . '&isFromAvis=true');
+        } else {
+            header('Location: /cars-clash/client/marque?idClient=' . $idClient . '&idMarque=' . $idMarque . '');
+        }
     }
 
     public function handleGotoPageMarques($idClient)
@@ -45,6 +49,11 @@ class GestionAccueilController
     public function handleGotoPageNews($idClient)
     {
         header('Location: /cars-clash/client/news?idClient=' . $idClient . '');
+    }
+
+    public function handleGotoPageAvis($idClient)
+    {
+        header('Location: /cars-clash/client/avis?idClient=' . $idClient . '');
     }
 
     public function showPageAccueil()

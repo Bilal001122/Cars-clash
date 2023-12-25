@@ -15,10 +15,16 @@ class PageCarDetailsView extends GlobalView
         $vehicule = $marqueController->getVehicule($idVehicule);
         $menuView = new MenuView();
         $threeAvis = $avisController->getThreeAvis($idVehicule);
+        $allAvis = $avisController->getAllAvis($idVehicule);
         ?>
 <div class="body w-11/12 mx-auto my-0 mb-96">
   <?php
-$menuView->content(3);
+
+        if (isset($_GET['isFromAvis'])) {
+            $menuView->content(4);
+        } else {
+            $menuView->content(3);
+        }
         ?>
   <div class="flex flex-col gap-14">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Description</p>
@@ -89,7 +95,16 @@ $carCardDetailsView->content($vehicule);
 
   <!-- Tous les avis -->
 
-  TODO: Tous les avis
+  <div class="flex flex-col gap-14">
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Touts les avis
+    </p>
+    <?php foreach ($allAvis as $avis) {?>
+    <div class="flex flex-col gap-14 bg-white p-20 rounded-2xl drop-shadow-2xl">
+      <p class=" animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?></p>
+      <p><?php echo $avis['Commentaire'] ?></p>
+    </div>
+    <?php }?>
+  </div>
 
   <!-- Fin tous les avis -->
 </div>

@@ -67,4 +67,9 @@ switch ($baseURL) {
         $controller->showPageCarDetails($idClient, $idMarque, $idVehicule);
         break;
 
+    case '/cars-clash/client/avis':
+        $controller = new GestionAvisController();
+        $controller->showPageAvis();
+        break;
+
 }
