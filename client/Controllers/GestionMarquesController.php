@@ -1,5 +1,6 @@
 <?php
 require_once 'Views/PageMarqueView.php';
+require_once 'Views/PageMarquesView.php';
 require_once 'Models/GestionMarquesModel.php';
 
 class GestionMarquesController
@@ -30,5 +31,11 @@ class GestionMarquesController
     {
         $view = new PageMarqueView();
         $view->showPageMarque($idMarque);
+    }
+
+    public function showPageMarques()
+    {
+        $view = new PageMarquesView();
+        $view->showPageMarques();
     }
 }

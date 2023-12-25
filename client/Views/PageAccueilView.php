@@ -28,7 +28,14 @@ foreach ($allDiaporamas as $diaporama) {
   <div class="menu flex justify-around mt-12 bg-white rounded-xl drop-shadow-2xl overflow-hidden">
     <div class="news">News</div>
     <div class="comparateur">Comparateur</div>
-    <div class="marques">Marques</div>
+    <div class="marques">
+      <form action="./redirect.php" method="post">
+      <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>"" >
+        <button name="goto-page-marques">
+          Marques
+        </button>
+      </form>
+    </div>
     <div class="avis">Avis</div>
     <div class="guide_achats">Guide d'achats</div>
     <div class="contacts">Contacts</div>
@@ -43,7 +50,7 @@ foreach ($fiveMarques as $marque) {
       <form action="./redirect.php" method="post">
         <input type="hidden" name="idMarque" value="<?php echo $marque['ID_Marque'] ?>">
         <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>"" >
-        <button name=" goto-page-marques">
+        <button name=" goto-page-marque">
         <div class="marque flex flex-col justify-center items-center">
           <img class="hover:scale-105 transition-all duration-300 cursor-pointer"
             src="/cars-clash/public/images/marques<?php echo $marque['Image_marque'] ?>" alt="" />

@@ -95,7 +95,7 @@ class GlobalView
     public function footer()
     {
         ?>
-<footer class="footer flex flex-col bg-white p-10 mt-20">
+<div class="footer flex flex-col bg-white p-10 mt-20">
   <div class="grid grid-cols-5">
     <div class="header_logo flex flex-col col-span-2">
       <div class="flex justify-start items-center">
@@ -129,7 +129,7 @@ class GlobalView
       <p class="font-semibold hover:underline transition-all duration-300 cursor-pointer">Termes & conditions</p>
     </div>
   </div>
-</footer>
+</div>
 <?php
 }
 

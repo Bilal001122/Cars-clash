@@ -34,7 +34,17 @@ class GestionAccueilController
 
     public function handleGotoPageMarque($idMarque, $idClient)
     {
-        header('Location: /cars-clash/client/marques?idClient=' . $idClient . '&idMarque=' . $idMarque . '');
+        header('Location: /cars-clash/client/marque?idClient=' . $idClient . '&idMarque=' . $idMarque . '');
+    }
+
+    public function handleGotoPageMarques($idClient)
+    {
+        header('Location: /cars-clash/client/marques?idClient=' . $idClient . '');
+    }
+
+    public function handleGotoPageNews($idClient)
+    {
+        header('Location: /cars-clash/client/news?idClient=' . $idClient . '');
     }
 
     public function showPageAccueil()

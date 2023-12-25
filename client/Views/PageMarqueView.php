@@ -26,12 +26,49 @@ foreach ($allDiaporamas as $diaporama) {
 }
         ?>
   <div class="menu flex justify-around mt-12 bg-white rounded-xl drop-shadow-2xl overflow-hidden">
-    <div class="news">News</div>
-    <div class="comparateur">Comparateur</div>
-    <div class="marques text-white bg-myprimary">Marques</div>
-    <div class="avis">Avis</div>
-    <div class="guide_achats">Guide d'achats</div>
-    <div class="contacts">Contacts</div>
+    <div class="news">
+      <form action="./redirect.php" method="post">
+        <button name="goto-page-news">
+          News
+        </button>
+      </form>
+    </div>
+    <div class="comparateur">
+      <form action="./redirect.php" method="post">
+        <button name="goto-page-comparateur">
+          Comparateur
+        </button>
+      </form>
+    </div>
+    <div class="marques bg-myprimary text-white">
+      <form action="./redirect.php" method="post">
+        <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
+        <button name=" goto-page-marques">
+          Marques
+        </button>
+      </form>
+    </div>
+    <div class="avis">
+      <form action="./redirect.php" method="post">
+        <button name="goto-page-avis">
+          Avis
+        </button>
+      </form>
+    </div>
+    <div class="guide_achats">
+      <form action="./redirect.php" method="post">
+        <button name="goto-page-guide-achat">
+          Guide d'achats
+        </button>
+      </form>
+    </div>
+    <div class="contacts">
+      <form action="./redirect.php" method="post">
+        <button name="goto-page-contacts">
+          Contacts
+        </button>
+      </form>
+    </div>
   </div>
 
 
