@@ -87,4 +87,9 @@ switch ($baseURL) {
         $controller = new GestionContactsController();
         $controller->showPageContacts();
         break;
+
+    case '/cars-clash/client/register':
+        $controller = new GestionLoginController();
+        $controller->showPageRegister();
+        break;
 }

@@ -14,9 +14,17 @@ class PageLoginView extends GlobalView
 </div>
 <div class="login_container">
   <?php
-if ($failed) {
+if ($failed == '1') {
             ?>
   <p class="login_container_title">E-mail ou mot de passe incorrect</p>
+  <?php
+} else if ($failed == '2') {
+            ?>
+  <p class="login_container_title">Votre compte est bloqué</p>
+  <?php
+} else if ($failed == '3') {
+            ?>
+  <p class="login_container_title">Votre compte est en attente de validation</p>
   <?php
 } else {
             ?>
@@ -31,8 +39,15 @@ if ($failed) {
     <input id="password" type='password' name='password' placeholder='mot de passe' required>
     <input type='submit' value='Se connecter' name="login">
   </form>
+  <div class="flex justify-center items-center mt-8">
+    <p class="text-myaccent text-2xl font-bold pr-1">Vous n'avez pas un compte? </p>
+    <form action="./redirect.php" method="post">
+      <button type="submit" name="goto-register-page">
+        <p class="text-myprimary underline text-2xl font-bold cursor-pointer"> Inscrivez-vous</p>
+      </button>
+    </form>
+  </div>
 </div>
-
 <?php
 
     }

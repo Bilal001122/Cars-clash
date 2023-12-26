@@ -68,7 +68,7 @@ $formComparView->content($marques, 1);
 
     <form class="flex justify-center items-center mt-20" action="./redirect.php" method="post">
       <button
-        class="animate-bounce bg-myprimary text-white font-bold p-4 text-4xl rounded-xl hover:scale-110 transition-all duration-300"
+        class="animate-pulse bg-myprimary text-white font-bold p-4 text-4xl rounded-xl hover:scale-110 transition-all duration-300"
         name="demarer-comparaison">
         Comparer
       </button>
@@ -76,9 +76,10 @@ $formComparView->content($marques, 1);
   </section>
 
   <form class="flex justify-center items-center mt-20" action="./redirect.php" method="post">
+    <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>">
     <button
       class="animate-pulse bg-white text-myprimary font-bold drop-shadow-2xl p-4 text-3xl rounded-xl hover:scale-110 transition-all duration-300"
-      name="goto-guide-achat">
+      name="goto-page-guide-achat">
       Aller vers guide d'achat
     </button>
   </form>

@@ -86,7 +86,7 @@ class PageEditVehiculeView extends GlobalView
 
         <div class="flex flex-col gap-10 mr-10 col-span-4 ml-10 w-1/4 justify-self-center">
           <label class="font-semibold" for="marque_annee">Marque:</label>
-          <select class="bg-mysecondary p-2 py-3 rounded-md" name="vehicule_marque" id="vehicule_marque">
+          <select name="vehicule_marque" id="vehicule_marque">
             <?php foreach ($allMarques as $marque) {?>
             <option value="<?=$marque['ID_Marque']?>"><?=$marque['Nom_marque']?></option>
             <?php }?>

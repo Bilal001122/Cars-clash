@@ -12,6 +12,11 @@ if (isset($_POST['login'])) {
     $loginController->handleLogin();
 }
 
+if (isset($_POST['register'])) {
+    $loginController = new GestionLoginController();
+    $loginController->handleRegister();
+}
+
 if (isset($_POST['logout'])) {
     $loginController = new GestionLoginController();
     $loginController->handleLogout();
@@ -174,4 +179,14 @@ if (isset($_POST['goto-page-contacts'])) {
     }
     $accueilController = new GestionAccueilController();
     $accueilController->handleGotoPageContacts($idClient);
+}
+
+if (isset($_POST['goto-register-page'])) {
+    $loginController = new GestionLoginController();
+    $loginController->handleGotoRegisterPage();
+}
+
+if (isset($_POST['goto-page-login'])) {
+    $loginController = new GestionLoginController();
+    $loginController->handleGotoLoginPage();
 }
