@@ -61,6 +61,11 @@ class GestionAccueilController
         header('Location: /cars-clash/client/guide-achat?idClient=' . $idClient . '');
     }
 
+    public function handleGotoPageContacts($idClient)
+    {
+        header('Location: /cars-clash/client/contact?idClient=' . $idClient . '');
+    }
+
     public function showPageAccueil()
     {
         if (isset($_SESSION['client'])) {

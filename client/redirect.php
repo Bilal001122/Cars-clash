@@ -153,13 +153,25 @@ if (isset($_POST['add-avis'])) {
 }
 
 if (isset($_POST['goto-page-avis'])) {
-    $idClient = $_POST['idClient'];
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
     $accueilController = new GestionAccueilController();
     $accueilController->handleGotoPageAvis($idClient);
 }
 
 if (isset($_POST['goto-page-guide-achat'])) {
-    $idClient = $_POST['idClient'];
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
     $accueilController = new GestionAccueilController();
     $accueilController->handleGotoPageGuideAchat($idClient);
+}
+
+if (isset($_POST['goto-page-contacts'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageContacts($idClient);
 }

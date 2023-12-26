@@ -51,7 +51,7 @@ class GlobalView
     {
         ?>
 <header class="header">
-  <div class="header_logo">
+  <div class="header_logo cursor-pointer">
     <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
     <p class="animate-bounce header_logo_text">CARS CLASH</p>
   </div>

@@ -3,10 +3,9 @@ require_once 'Controllers/GestionLoginController.php';
 require_once 'Controllers/GestionAccueilController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionNewsController.php';
-
 require_once 'Controllers/GestionAvisController.php';
-
 require_once 'Controllers/GestionGuideAchatController.php';
+require_once 'Controllers/GestionContactsController.php';
 session_start();
 $request = $_SERVER['REQUEST_URI'];
 $baseURL = strtok($request, '?');
@@ -38,14 +37,17 @@ switch ($baseURL) {
         $controller = new GestionLoginController();
         $controller->showPageLogin($failed);
         break;
+
     case '/cars-clash/client/login':
         $controller = new GestionLoginController();
         $controller->showPageLogin($failed);
         break;
+
     case '/cars-clash/client/accueil':
         $controller = new GestionAccueilController();
         $controller->showPageAccueil();
         break;
+
     case '/cars-clash/client/marque':
         $controller = new GestionMarquesController();
         $controller->showPageMarque($idMarque);
@@ -81,4 +83,8 @@ switch ($baseURL) {
         $controller->showPageGuideAchat();
         break;
 
+    case '/cars-clash/client/contact':
+        $controller = new GestionContactsController();
+        $controller->showPageContacts();
+        break;
 }

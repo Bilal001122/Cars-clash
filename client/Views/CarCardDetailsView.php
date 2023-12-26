@@ -19,13 +19,12 @@ class CarCardDetailsView
   class=" card_details_for_car grid grid-cols-2 grow place-content-center gap-12 bg-white p-20 rounded-2xl drop-shadow-2xl relative">
 
   <?php
- 
- if(!isset($_GET['isFromAvis']))
- {
-?>
+
+        if (!isset($_GET['isFromAvis'])) {
+            ?>
   <div class="absolute top-7 right-7">
     <?php if ($fav) {
-            ?>
+                ?>
     <form action="./redirect.php" method="post">
       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
       <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
@@ -39,7 +38,7 @@ class CarCardDetailsView
 
     <?php
 } else {
-            ?>
+                ?>
     <form action="./redirect.php" method="post">
       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
       <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
@@ -54,9 +53,9 @@ class CarCardDetailsView
 }?>
   </div>
   <?php
- }
- 
- ?>
+}
+
+        ?>
 
   <div class="flex justify-start items-center">
     <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Modèle:</p>
