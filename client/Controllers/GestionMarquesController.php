@@ -43,23 +43,28 @@ class GestionMarquesController
         return $result;
     }
 
-    public function handleAddToFav($idClient, $idVehicule, $idMarque, $bool = 0)
+    public function handleAddToFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false)
     {
         $model = new GestionMarquesModel();
         $model->handleAddToFav($idClient, $idVehicule);
+
         if ($bool == 1) {
             header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        } else if ($isFromGuideAchat) {
+            header("Location: ./guide-achat?idClient=$idClient");
         } else {
             header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
         }
     }
 
-    public function handleRemoveFromFav($idClient, $idVehicule, $idMarque, $bool = 0)
+    public function handleRemoveFromFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false)
     {
         $model = new GestionMarquesModel();
         $model->handleRemoveFromFav($idClient, $idVehicule);
         if ($bool == 1) {
             header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        } else if ($isFromGuideAchat) {
+            header("Location: ./guide-achat?idClient=$idClient");
         } else {
             header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
         }

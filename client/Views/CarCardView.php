@@ -14,7 +14,12 @@ class CarCardView
     <form action="./redirect.php" method="post">
       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
       <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+      <input type="hidden" name="URL" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+      <?php if (isset($_GET['idMarque'])) {
+            ?>
       <input type="hidden" value="<?php echo $_GET['idMarque'] ?>" name="idMarque">
+      <?php
+}?>
       <?php if ($fav) {
             ?>
       <button name="remove-from-fav" type="submit">
@@ -42,7 +47,11 @@ class CarCardView
     <form action="./redirect.php" method="post">
       <input type="hidden" value="<?php echo $vehicule['ID_Vehicule'] ?>" name="idVehicule">
       <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+      <?php if (isset($_GET['idMarque'])) {
+            ?>
       <input type="hidden" value="<?php echo $_GET['idMarque'] ?>" name="idMarque">
+      <?php
+}?>
       <?php
 if (isset($_GET['isFromAvis'])) {
             ?>

@@ -3,6 +3,10 @@ require_once 'Controllers/GestionLoginController.php';
 require_once 'Controllers/GestionAccueilController.php';
 require_once 'Controllers/GestionMarquesController.php';
 require_once 'Controllers/GestionNewsController.php';
+
+require_once 'Controllers/GestionAvisController.php';
+
+require_once 'Controllers/GestionGuideAchatController.php';
 session_start();
 $request = $_SERVER['REQUEST_URI'];
 $baseURL = strtok($request, '?');
@@ -71,7 +75,7 @@ switch ($baseURL) {
         $controller = new GestionAvisController();
         $controller->showPageAvis();
         break;
-    
+
     case '/cars-clash/client/guide-achat':
         $controller = new GestionGuideAchatController();
         $controller->showPageGuideAchat();
