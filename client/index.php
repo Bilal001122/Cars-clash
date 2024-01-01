@@ -104,4 +104,14 @@ switch ($baseURL) {
         $comparaisonController = new GestionComparaisonController();
         $comparaisonController->showPageComparaison2();
         break;
+
+    case '/cars-clash/client/comparaison3':
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->showPageComparaison3();
+        break;
+
+    case '/cars-clash/client/comparaison4':
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->showPageComparaison4();
+        break;
 }

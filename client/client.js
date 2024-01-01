@@ -27,8 +27,8 @@ if (document.querySelector(".diaporama") != null) {
   window.onload = startSlideshow();
 }
 
-const forms = document.querySelectorAll("form");
-const compareButton = document.querySelector('[name="demarer-comparaison"]');
+// const forms = document.querySelectorAll("form");
+// const compareButton = document.querySelector('[name="demarer-comparaison"]');
 //compareButton.disabled = true;
 
 // function checkForms() {
