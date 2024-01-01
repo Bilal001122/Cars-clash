@@ -6,6 +6,8 @@ require_once 'Controllers/GestionNewsController.php';
 require_once 'Controllers/GestionAvisController.php';
 require_once 'Controllers/GestionGuideAchatController.php';
 require_once 'Controllers/GestionContactsController.php';
+require_once 'Controllers/GestionComparaisonController.php';
+
 session_start();
 $request = $_SERVER['REQUEST_URI'];
 $baseURL = strtok($request, '?');
@@ -91,5 +93,15 @@ switch ($baseURL) {
     case '/cars-clash/client/register':
         $controller = new GestionLoginController();
         $controller->showPageRegister();
+        break;
+
+    case '/cars-clash/client/comparaison':
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->showPageComparaison();
+        break;
+
+    case '/cars-clash/client/comparaison2':
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->showPageComparaison2();
         break;
 }

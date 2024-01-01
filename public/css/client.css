@@ -293,3 +293,24 @@ body {
   width: 30%;
   object-fit: cover;
 }
+
+.table_compare {
+  border-collapse: collapse;
+}
+
+.table_compare tr:nth-child(even) {
+  background-color: #3562e91f;
+}
+
+.table_compare td,
+.table_compare th,
+.table_compare {
+  border: 2px solid rgba(0, 0, 0, 0.337);
+  padding: 1.5rem;
+}
+
+.table_compare th {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+}

@@ -22,7 +22,7 @@ class MenuView
         }?>"">
       <form action=" ./redirect.php" method="post">
     <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>" />
-    <button class="w-full" name="goto-page-comparateur">
+    <button class="w-full" name="goto-page-comparaison">
       Comparateur
     </button>
     </form>

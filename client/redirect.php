@@ -3,9 +3,8 @@
 require_once 'Controllers/GestionLoginController.php';
 require_once 'Controllers/GestionAccueilController.php';
 require_once 'Controllers/GestionNewsController.php';
-
 require_once 'Controllers/GestionMarquesController.php';
-
+require_once 'Controllers/GestionComparaisonController.php';
 session_start();
 if (isset($_POST['login'])) {
     $loginController = new GestionLoginController();
@@ -189,4 +188,42 @@ if (isset($_POST['goto-register-page'])) {
 if (isset($_POST['goto-page-login'])) {
     $loginController = new GestionLoginController();
     $loginController->handleGotoLoginPage();
+}
+
+if (isset($_POST['goto-page-accueil'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageAccueil($idClient);
+}
+
+if (isset($_POST['goto-page-comparaison'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageComparaison($idClient);
+}
+
+if (isset($_POST['demarer-comparaison'])) {
+
+    // echo "<script>console.log('bilal');</script>";
+
+    // // echo "<script>console.log(" . json_encode($_POST['idClient']) . ");</script>";
+    if (isset($_POST['idClient']) && isset($_POST['marque_1'])
+        && isset($_POST['modele_1']) && isset($_POST['version_1']) && isset($_POST['annee_1']) && isset($_POST['marque_2']) && isset($_POST['modele_2']) && isset($_POST['version_2']) && isset($_POST['annee_2'])) {
+        $idClient = $_POST['idClient'];
+        $marque_1 = $_POST['marque_1'];
+        $modele_1 = $_POST['modele_1'];
+        $version_1 = $_POST['version_1'];
+        $annee_1 = $_POST['annee_1'];
+        $marque_2 = $_POST['marque_2'];
+        $modele_2 = $_POST['modele_2'];
+        $version_2 = $_POST['version_2'];
+        $annee_2 = $_POST['annee_2'];
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->handleGotoPageComparaison($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2);
+    }
+
 }

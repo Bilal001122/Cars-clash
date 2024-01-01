@@ -26,3 +26,46 @@ if (document.querySelector(".diaporama") != null) {
   );
   window.onload = startSlideshow();
 }
+
+const forms = document.querySelectorAll("form");
+const compareButton = document.querySelector('[name="demarer-comparaison"]');
+//compareButton.disabled = true;
+
+// function checkForms() {
+//   let filledForms = 0;
+//   forms.forEach((form) => {
+//     const inputs = form.querySelectorAll('input[type="text"]');
+//     let filledInputs = 0;
+//     inputs.forEach((input) => {
+//       if (input.value !== "") {
+//         filledInputs++;
+//       }
+//     });
+//     if (filledInputs > 2) {
+//       filledForms++;
+//     }
+//   });
+
+//   if (filledForms >= 2) {
+//     compareButton.disabled = false;
+//   } else {
+//     compareButton.disabled = true;
+//   }
+// }
+
+// forms.forEach((form) => {
+//   const inputs = form.querySelectorAll('input[type="text"]');
+//   inputs.forEach((input) => {
+//     input.addEventListener("input", checkForms);
+//   });
+// });
+
+// const compareForm = document.getElementById("compareForm");
+
+// compareButton.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   compareForm.submit();
+//   setTimeout(() => {
+//     console.log("test");
+//   }, 5000);
+// });

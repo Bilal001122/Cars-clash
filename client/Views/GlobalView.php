@@ -51,24 +51,30 @@ class GlobalView
     {
         ?>
 <header class="header">
-  <div class="header_logo cursor-pointer">
-    <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
-    <p class="animate-bounce header_logo_text">CARS CLASH</p>
-  </div>
+  <form action="./redirect.php" method="post">
+    <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>">
+    <button type="submit" name="goto-page-accueil">
+      <div class="header_logo cursor-pointer">
+        <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
+        <p class="animate-bounce header_logo_text">CARS CLASH</p>
+      </div>
+    </button>
+  </form>
   <div class="social_links">
     <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/public/images/facebook.png" alt="Facebook" class="social_links_link_img">
+      <img title="facebook" src="/cars-clash/public/images/facebook.png" alt="Facebook" class="social_links_link_img">
     </a>
     <a href="https://www.twitter.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/public/images/twitter.png" alt="Twitter" class="social_links_link_img">
+      <img title="twitter" src="/cars-clash/public/images/twitter.png" alt="Twitter" class="social_links_link_img">
     </a>
     <a href="https://www.linkedin.com/" target="_blank" class="social_links_link">
-      <img src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
+      <img title="linkedIn" src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
     </a>
 
     <form action="./redirect.php" method="POST">
       <button type="submit" name="user-profil">
-        <p class="hover:scale-110 transition-all duration-300">
+        <p title="votre profil"
+          class="hover:scale-110 transition-all duration-300 font-semibold animate-pulse text-myprimary">
           <?php
 
         if (isset($_GET['idClient'])) {

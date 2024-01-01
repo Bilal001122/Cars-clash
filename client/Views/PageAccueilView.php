@@ -59,8 +59,8 @@ foreach ($fiveMarques as $marque) {
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Démarrer votre comparaison</p>
     <div class="grid grid-cols-2 gap-20">
       <?php
-$formComparView->content($marques, 1);
-        $formComparView->content($marques, 2);
+$formComparView->content($marques, 1, true);
+        $formComparView->content($marques, 2, true);
         $formComparView->content($marques, 3);
         $formComparView->content($marques, 4);
         ?>
