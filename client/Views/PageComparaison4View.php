@@ -27,7 +27,9 @@ $menuView->content(2);
         ?>
 
   <section class="comparaison_section mt-80">
-    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Démarrer votre comparaison</p>
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70">Démarrer votre comparaison</p>
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">( Il faut remplir au moins les 2
+      premiers formulaires )</p>
     <form id="compareForm" action="./redirect.php" method="POST">
       <div class="grid grid-cols-2 gap-20">
         <?php
