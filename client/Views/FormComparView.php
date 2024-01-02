@@ -19,7 +19,11 @@ class FormComparView
       <?php if ($required) {echo "required";}?>>
       <?php foreach ($marques as $marque) {
             ?>
-      <option value="<?php echo $marque['Nom_marque'] ?>"><?php echo $marque['Nom_marque'] ?></option>
+      <option value="<?php echo $marque['Nom_marque'] ?>" <?php if (isset($_GET['marque_' . $numeroVoiture . ''])) {
+                if (strtolower($_GET['marque_' . $numeroVoiture . '']) === strtolower($marque['Nom_marque'])) {
+                    echo "selected";
+                }
+            }?>> <?php echo $marque['Nom_marque'] ?> </option>
       <?php
 }?>
     </select>
@@ -29,21 +33,28 @@ class FormComparView
     <input placeholder="Modèle"
       class="p-3 w-8/12 bg-myaccent bg-opacity-5 rounded-xl ring-2 ring-gray-300 focus:outline-none focus:ring-myprimary focus:ring-2"
       type="text" name="modele_<?php echo $numeroVoiture ?>" id="modele_<?php echo $numeroVoiture ?>"
-      <?php if ($required) {echo "required";}?>>
+      <?php if ($required) {echo "required";}?> <?php if (isset($_GET['modele_' . $numeroVoiture . ''])) {
+            echo "value='" . $_GET['modele_' . $numeroVoiture . ''] . "'";
+        }
+        ?>>
   </div>
   <div class="flex flex-col">
     <label class="font-bold py-4" for="version_<?php echo $numeroVoiture ?>">Version</label>
     <input placeholder="Version"
       class="p-3 w-8/12 bg-myaccent bg-opacity-5 rounded-xl ring-2 ring-gray-300 focus:outline-none focus:ring-myprimary focus:ring-2"
       type="text" name="version_<?php echo $numeroVoiture ?>" id="version_<?php echo $numeroVoiture ?>"
-      <?php if ($required) {echo "required";}?>>
+      <?php if ($required) {echo "required";}?> <?php if (isset($_GET['version_' . $numeroVoiture . ''])) {
+            echo "value='" . $_GET['version_' . $numeroVoiture . ''] . "'";
+        }?>>
   </div>
   <div class="flex flex-col">
     <label class="font-bold py-4" for="annee_<?php echo $numeroVoiture ?>">Année</label>
     <input placeholder="Année"
       class="p-3 w-8/12 bg-myaccent bg-opacity-5 rounded-xl ring-2 ring-gray-300 focus:outline-none focus:ring-myprimary focus:ring-2"
       type="text" name="annee_<?php echo $numeroVoiture ?>" id="annee_<?php echo $numeroVoiture ?>"
-      <?php if ($required) {echo "required";}?>>
+      <?php if ($required) {echo "required";}?> <?php if (isset($_GET['annee_' . $numeroVoiture . ''])) {
+            echo "value='" . $_GET['annee_' . $numeroVoiture . ''] . "'";
+        }?>>
   </div>
 </div>
 <?php

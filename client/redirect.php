@@ -208,42 +208,8 @@ if (isset($_POST['goto-page-comparaison'])) {
 }
 
 if (isset($_POST['demarer-comparaison'])) {
-    if (isset($_POST['idClient']) && isset($_POST['marque_1'])
-        && isset($_POST['modele_1']) && isset($_POST['version_1']) && isset($_POST['annee_1']) && isset($_POST['marque_2']) && isset($_POST['modele_2']) && isset($_POST['version_2']) && isset($_POST['annee_2'])) {
-        $idClient = $_POST['idClient'];
-        $marque_1 = $_POST['marque_1'];
-        $modele_1 = $_POST['modele_1'];
-        $version_1 = $_POST['version_1'];
-        $annee_1 = $_POST['annee_1'];
-        $marque_2 = $_POST['marque_2'];
-        $modele_2 = $_POST['modele_2'];
-        $version_2 = $_POST['version_2'];
-        $annee_2 = $_POST['annee_2'];
-        $comparaisonController = new GestionComparaisonController();
-        $comparaisonController->handleGotoPageComparaison2($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2);
-    }
-
-    if (isset($_POST['idClient']) && isset($_POST['marque_1'])
-        && isset($_POST['modele_1']) && isset($_POST['version_1']) && isset($_POST['annee_1']) && isset($_POST['marque_2']) && isset($_POST['modele_2']) && isset($_POST['version_2']) && isset($_POST['annee_2']) && isset($_POST['marque_3']) && isset($_POST['modele_3']) && isset($_POST['version_3']) && isset($_POST['annee_3'])) {
-        $idClient = $_POST['idClient'];
-        $marque_1 = $_POST['marque_1'];
-        $modele_1 = $_POST['modele_1'];
-        $version_1 = $_POST['version_1'];
-        $annee_1 = $_POST['annee_1'];
-        $marque_2 = $_POST['marque_2'];
-        $modele_2 = $_POST['modele_2'];
-        $version_2 = $_POST['version_2'];
-        $annee_2 = $_POST['annee_2'];
-        $marque_3 = $_POST['marque_3'];
-        $modele_3 = $_POST['modele_3'];
-        $version_3 = $_POST['version_3'];
-        $annee_3 = $_POST['annee_3'];
-        $comparaisonController = new GestionComparaisonController();
-        $comparaisonController->handleGotoPageComparaison3($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2, $marque_3, $modele_3, $version_3, $annee_3);
-    }
-
-    if (isset($_POST['idClient']) && isset($_POST['marque_1'])
-        && isset($_POST['modele_1']) && isset($_POST['version_1']) && isset($_POST['annee_1']) && isset($_POST['marque_2']) && isset($_POST['modele_2']) && isset($_POST['version_2']) && isset($_POST['annee_2']) && isset($_POST['marque_3']) && isset($_POST['modele_3']) && isset($_POST['version_3']) && isset($_POST['annee_3']) && isset($_POST['marque_4']) && isset($_POST['modele_4']) && isset($_POST['version_4']) && isset($_POST['annee_4'])) {
+    if (!empty($_POST['idClient']) && !empty($_POST['marque_1'])
+        && !empty($_POST['modele_1']) && !empty($_POST['version_1']) && !empty($_POST['annee_1']) && !empty($_POST['marque_2']) && !empty($_POST['modele_2']) && !empty($_POST['version_2']) && !empty($_POST['annee_2']) && !empty($_POST['marque_3']) && !empty($_POST['modele_3']) && !empty($_POST['version_3']) && !empty($_POST['annee_3']) && !empty($_POST['marque_4']) && !empty($_POST['modele_4']) && !empty($_POST['version_4']) && !empty($_POST['annee_4'])) {
         $idClient = $_POST['idClient'];
         $marque_1 = $_POST['marque_1'];
         $modele_1 = $_POST['modele_1'];
@@ -263,5 +229,36 @@ if (isset($_POST['demarer-comparaison'])) {
         $annee_4 = $_POST['annee_4'];
         $comparaisonController = new GestionComparaisonController();
         $comparaisonController->handleGotoPageComparaison4($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2, $marque_3, $modele_3, $version_3, $annee_3, $marque_4, $modele_4, $version_4, $annee_4);
+    } else if (!empty($_POST['idClient']) && !empty($_POST['marque_1'])
+        && !empty($_POST['modele_1']) && !empty($_POST['version_1']) && !empty($_POST['annee_1']) && !empty($_POST['marque_2']) && !empty($_POST['modele_2']) && !empty($_POST['version_2']) && !empty($_POST['annee_2']) && !empty($_POST['marque_3']) && !empty($_POST['modele_3']) && !empty($_POST['version_3']) && !empty($_POST['annee_3']) && (empty($_POST['marque_4']) || empty($_POST['modele_4']) || empty($_POST['version_4']) || empty($_POST['annee_4']))) {
+        $idClient = $_POST['idClient'];
+        $marque_1 = $_POST['marque_1'];
+        $modele_1 = $_POST['modele_1'];
+        $version_1 = $_POST['version_1'];
+        $annee_1 = $_POST['annee_1'];
+        $marque_2 = $_POST['marque_2'];
+        $modele_2 = $_POST['modele_2'];
+        $version_2 = $_POST['version_2'];
+        $annee_2 = $_POST['annee_2'];
+        $marque_3 = $_POST['marque_3'];
+        $modele_3 = $_POST['modele_3'];
+        $version_3 = $_POST['version_3'];
+        $annee_3 = $_POST['annee_3'];
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->handleGotoPageComparaison3($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2, $marque_3, $modele_3, $version_3, $annee_3);
+    } else if (!empty($_POST['idClient']) && !empty($_POST['marque_1'])
+        && !empty($_POST['modele_1']) && !empty($_POST['version_1']) && !empty($_POST['annee_1']) && !empty($_POST['marque_2']) && !empty($_POST['modele_2']) && !empty($_POST['version_2']) && !empty($_POST['annee_2']) && (empty($_POST['marque_3']) || empty($_POST['modele_3']) || empty($_POST['version_3']) || empty($_POST['annee_3']) || empty($_POST['marque_4']) || empty($_POST['modele_4']) || empty($_POST['version_4']) || empty($_POST['annee_4']))) {
+        $idClient = $_POST['idClient'];
+        $marque_1 = $_POST['marque_1'];
+        $modele_1 = $_POST['modele_1'];
+        $version_1 = $_POST['version_1'];
+        $annee_1 = $_POST['annee_1'];
+        $marque_2 = $_POST['marque_2'];
+        $modele_2 = $_POST['modele_2'];
+        $version_2 = $_POST['version_2'];
+        $annee_2 = $_POST['annee_2'];
+        $comparaisonController = new GestionComparaisonController();
+        $comparaisonController->handleGotoPageComparaison2($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2);
+
     }
 }
