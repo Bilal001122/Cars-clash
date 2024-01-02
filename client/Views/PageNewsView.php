@@ -26,7 +26,7 @@ $menuView->content(1);
             ?>
       <div class="grid grid-cols-4 bg-white rounded-3xl overflow-hidden drop-shadow-2xl">
         <div>
-          <img class="w-full h-full object-cover" src="/cars-clash/public/images/diaporamas<?php echo $news['Image'] ?>"
+          <img class="w-full h-full object-cover" src="/cars-clash/public/images/news<?php echo $news['Image'] ?>"
             alt="">
         </div>
         <div class="col-span-3 p-10">

@@ -108,4 +108,24 @@ class GestionComparaisonModel extends ConnexionBdd
         }
     }
 
+    public function getTopThreeComparaison()
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT ID_Vehicule1, ID_Vehicule2, COUNT(*) AS nbComparaisons
+            FROM comparaison JOIN vehicule
+            GROUP BY ID_Vehicule1, ID_Vehicule2
+            ORDER BY nbComparaisons DESC
+            LIMIT 3;
+            ";
+            $requete = $database->prepare($sql_query);
+            $requete->execute();
+            $topThreeComparaison = $requete->fetchAll();
+            $this->deconnexion($database);
+            return $topThreeComparaison;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }

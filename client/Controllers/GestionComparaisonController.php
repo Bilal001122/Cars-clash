@@ -7,6 +7,13 @@ require_once 'Models/GestionComparaisonModel.php';
 class GestionComparaisonController
 {
 
+    public function getTopThreeComparaison()
+    {
+        $gestionComparaisonModel = new GestionComparaisonModel();
+        $topThreeComparaison = $gestionComparaisonModel->getTopThreeComparaison();
+        return $topThreeComparaison;
+    }
+
     public function compareTwoVehicules($marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2)
     {
         $gestionComparaisonModel = new GestionComparaisonModel();

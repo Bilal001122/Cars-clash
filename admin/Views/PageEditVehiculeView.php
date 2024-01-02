@@ -9,8 +9,9 @@ class PageEditVehiculeView extends GlobalView
         $controller = new GestionVehiculesController();
         $vehicule = $controller->getVehiculeById();
 
-        $controller = new GestionMarquesController();
-        $allMarques = $controller->getAllMarques();
+        $marqueController = new GestionMarquesController();
+        $allMarques = $marqueController->getAllMarques();
+        $marque = $marqueController->getVehiculeMarque($idVehicule);
         ?>
 
 <body>
@@ -84,11 +85,19 @@ class PageEditVehiculeView extends GlobalView
             value="<?php echo "{$vehicule["Prix"]}" ?>">
         </div>
 
-        <div class="flex flex-col gap-10 mr-10 col-span-4 ml-10 w-1/4 justify-self-center">
+        <div class="flex flex-col gap-10 mr-10 col-span-4 ml-10 w-1/4 justify-self-center ">
           <label class="font-semibold" for="marque_annee">Marque:</label>
-          <select name="vehicule_marque" id="vehicule_marque">
+          <select
+            class=" p-3 bg-myaccent bg-mysecondary  rounded-xl focus:outline-none focus:ring-myprimary focus:ring-2"
+            name="vehicule_marque" id="vehicule_marque">
             <?php foreach ($allMarques as $marque) {?>
-            <option value="<?=$marque['ID_Marque']?>"><?=$marque['Nom_marque']?></option>
+            <option value="<?=$marque['ID_Marque']?>" <?php
+
+            if ($marque['ID_Marque'] === $vehicule['ID_Marque']) {
+                echo 'selected';
+            }
+
+            ?>><?=$marque['Nom_marque']?></option>
             <?php }?>
           </select>
         </div>

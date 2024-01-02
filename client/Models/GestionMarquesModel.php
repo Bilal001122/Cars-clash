@@ -18,6 +18,22 @@ class GestionMarquesModel extends ConnexionBdd
         }
     }
 
+    public function getMarqueByIdVehicule($idVehicule)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT * FROM marque WHERE ID_Marque = (SELECT ID_Marque FROM vehicule WHERE ID_Vehicule = :idVehicule)";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idVehicule', $idVehicule);
+            $requete->execute();
+            $result = $requete->fetch(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function getMarque($idMarque)
     {
         try {

@@ -2,18 +2,25 @@
 require_once 'GlobalView.php';
 require_once 'MenuView.php';
 require_once 'Controllers/GestionAccueilController.php';
+require_once 'Controllers/GestionComparaisonController.php';
+require_once 'Controllers/GestionMarquesController.php';
 require_once 'Views/FormComparView.php';
+require_once 'Views/CompareCardView.php';
 class PageAccueilView extends GlobalView
 {
 
     public function content()
     {
         $controller = new GestionAccueilController();
+        $marqueController = new GestionMarquesController();
         $formComparView = new FormComparView();
+        $comparatorController = new GestionComparaisonController();
+        $topThreeComparaison = $comparatorController->getTopThreeComparaison();
         $allDiaporamas = $controller->getAllDiaporama();
         $fiveMarques = $controller->getFiveMarques();
         $marques = $controller->getMarques();
         $menuView = new MenuView();
+        $compareCardView = new CompareCardView();
         ?>
 <div class="body w-11/12 mx-auto my-0">
   <?php
@@ -90,7 +97,22 @@ $formComparView->content($marques, 1, true);
   </form>
 
   <section class="comparaison_plus_recherche">
-
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mt-24 mb-10">Les 3 comparaisons les plus
+      recherchés</p>
+    <?php foreach ($topThreeComparaison as $comparaison) {
+            ?>
+    <div class="flex w-full justify-center mb-20">
+      <?php
+$compareCardView->content($marqueController->getVehicule($comparaison['ID_Vehicule1']));
+            ?>
+      <p class="text-9xl text-myprimary font-bold grow justify-self-center self-center text-center">VS</p>
+      <?php
+$compareCardView->content($marqueController->getVehicule($comparaison['ID_Vehicule2']));
+            ?>
+    </div>
+    <?php
+}
+        ?>
   </section>
 
 </div>

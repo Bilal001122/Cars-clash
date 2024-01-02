@@ -35,6 +35,13 @@ class GestionMarquesController
         return $result;
     }
 
+    public function getMarqueByIdVehicule($idVehicule)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getMarqueByIdVehicule($idVehicule);
+        return $result;
+    }
+
     public function verifyIfFavoris($idVehicule)
     {
         $idClient = $_GET['idClient'];

@@ -21,6 +21,13 @@ class GestionMarquesController
         return $result;
     }
 
+    public function getVehiculeMarque($idVehicule)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getVehiculeMarque($idVehicule);
+        return $result;
+    }
+
     public function handleAddMarque()
     {
         $nomMarque = $_POST['marque_name'];
