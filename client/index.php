@@ -114,4 +114,9 @@ switch ($baseURL) {
         $comparaisonController = new GestionComparaisonController();
         $comparaisonController->showPageComparaison4();
         break;
+
+    case '/cars-clash/client/user-profil':
+        $controller = new GestionAccueilController();
+        $controller->showPageUserProfil($idClient);
+        break;
 }

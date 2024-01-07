@@ -213,4 +213,19 @@ class GestionMarquesModel extends ConnexionBdd
         }
     }
 
+    public function getFavoris($idClient)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT * FROM vehicule WHERE ID_Vehicule IN (SELECT ID_Vehicule FROM favoris_utilisateur_vehicule WHERE ID_utilisateur = :idClient)";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idClient', $idClient);
+            $requete->execute();
+            $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }

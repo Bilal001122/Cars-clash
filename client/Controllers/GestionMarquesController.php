@@ -50,6 +50,13 @@ class GestionMarquesController
         return $result;
     }
 
+    public function getFavoris($idClient)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getFavoris($idClient);
+        return $result;
+    }
+
     public function handleAddToFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false)
     {
         $model = new GestionMarquesModel();

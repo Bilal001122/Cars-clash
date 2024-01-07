@@ -262,3 +262,11 @@ if (isset($_POST['demarer-comparaison'])) {
 
     }
 }
+
+if (isset($_POST['user-profil'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    $accueilController = new GestionAccueilController();
+    $accueilController->handleGotoPageUserProfil($idClient);
+}

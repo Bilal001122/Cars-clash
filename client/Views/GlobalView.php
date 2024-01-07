@@ -72,6 +72,7 @@ class GlobalView
     </a>
 
     <form action="./redirect.php" method="POST">
+      <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>">
       <button type="submit" name="user-profil">
         <p title="votre profil"
           class="hover:scale-110 transition-all duration-300 font-semibold animate-pulse text-myprimary">
