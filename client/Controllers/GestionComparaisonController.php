@@ -56,25 +56,44 @@ class GestionComparaisonController
 
     public function showPageComparaison()
     {
-        $pageComparaisonView = new PageComparaisonView();
-        $pageComparaisonView->showPageComparaison();
+        if (isset($_SESSION['client'])) {
+            $pageComparaisonView = new PageComparaisonView();
+            $pageComparaisonView->showPageComparaison();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
     }
 
     public function showPageComparaison2()
     {
-        $pageComparaisonView = new PageComparaison2View();
-        $pageComparaisonView->showPageComparaison2();
+        if (isset($_SESSION['client'])) {
+            $pageComparaisonView = new PageComparaison2View();
+            $pageComparaisonView->showPageComparaison2();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
     public function showPageComparaison3()
     {
-        $pageComparaisonView = new PageComparaison3View();
-        $pageComparaisonView->showPageComparaison3();
+        if (isset($_SESSION['client'])) {
+            $pageComparaisonView = new PageComparaison3View();
+            $pageComparaisonView->showPageComparaison3();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
     public function showPageComparaison4()
     {
-        $pageComparaisonView = new PageComparaison4View();
-        $pageComparaisonView->showPageComparaison4();
+        if (isset($_SESSION['client'])) {
+            $pageComparaisonView = new PageComparaison4View();
+            $pageComparaisonView->showPageComparaison4();
+
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
     }
 }

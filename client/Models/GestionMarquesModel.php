@@ -228,4 +228,33 @@ class GestionMarquesModel extends ConnexionBdd
             echo $e->getMessage();
         }
     }
+
+    public function getOptionsMarque($selectedMarque)
+    {
+        try {
+            $database = $this->connexion();
+            $sqlModele = "SELECT DISTINCT v.Modele
+            FROM vehicule v
+            INNER JOIN marque m ON v.id_marque = m.id_marque
+            WHERE m.Nom_marque = :selectedMarque";
+
+            $stmtModele = $database->prepare($sqlModele);
+            $stmtModele->bindParam(':selectedMarque', $selectedMarque);
+            $stmtModele->execute();
+
+            $modeles = [];
+
+            if ($stmtModele->rowCount() > 0) {
+                while ($row = $stmtModele->fetch(PDO::FETCH_ASSOC)) {
+                    $modeles[] = $row['Modele'];
+                }
+                return $modeles;
+            } else {
+                return null;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }

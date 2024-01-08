@@ -17,7 +17,7 @@ class PageUserView extends GlobalView
     <div class="grid grid-cols-4 gap-10">
       <?php
 foreach ($favoris as $vehicule) {
-            $carCardView->content($vehicule);
+            $carCardView->content($vehicule, true);
         }
         ?>
   </section>

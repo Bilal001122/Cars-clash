@@ -21,8 +21,12 @@ class GestionGuideAchatController
 
     public function showPageGuideAchat()
     {
-        $view = new PageGuideAchatView();
-        $view->showPageGuideAchat();
+        if (isset($_SESSION['client'])) {
+            $view = new PageGuideAchatView();
+            $view->showPageGuideAchat();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
     }
 
 }

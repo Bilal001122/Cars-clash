@@ -15,8 +15,13 @@ class GestionContactsController
 
     public function showPageContacts()
     {
-        $view = new PageContactsView();
-        $view->showPageContacts();
+        if (isset($_SESSION['client'])) {
+            $view = new PageContactsView();
+            $view->showPageContacts();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
 }

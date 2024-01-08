@@ -26,13 +26,24 @@ class GestionNewsController
 
     public function showPageNews()
     {
-        $pageNewsView = new PageNewsView();
-        $pageNewsView->showPageNews();
+        if (isset($_SESSION['client'])) {
+            $pageNewsView = new PageNewsView();
+            $pageNewsView->showPageNews();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
     public function showPageNewsOdd($idNews)
     {
-        $pageNewsView = new PageNewsOddView();
-        $pageNewsView->showPageNewsOdd($idNews);
+
+        if (isset($_SESSION['client'])) {
+            $pageNewsView = new PageNewsOddView();
+            $pageNewsView->showPageNewsOdd($idNews);
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 }

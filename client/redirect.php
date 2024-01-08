@@ -84,6 +84,8 @@ if (isset($_POST['add-to-fav'])) {
     $marqueController = new GestionMarquesController();
     if (preg_match('/guide-achat/', $baseURL)) {
         $marqueController->handleAddToFav($idClient, $idVehicule, $idMarque, 0, true);
+    } else if (preg_match('/user-profil/', $baseURL)) {
+        $marqueController->handleAddToFav($idClient, $idVehicule, $idMarque, 0, true, true);
     } else {
         $marqueController->handleAddToFav($idClient, $idVehicule, $idMarque, $bool, false);
     }
@@ -107,6 +109,8 @@ if (isset($_POST['remove-from-fav'])) {
     }
     $marqueController = new GestionMarquesController();
     if (preg_match('/guide-achat/', $baseURL)) {$marqueController->handleRemoveFromFav($idClient, $idVehicule, $idMarque, 0, true);
+    } else if (preg_match('/user-profil/', $baseURL)) {
+        $marqueController->handleRemoveFromFav($idClient, $idVehicule, $idMarque, 0, true, true);
     } else {
         $marqueController->handleRemoveFromFav($idClient, $idVehicule, $idMarque, $bool, false);
     }

@@ -25,7 +25,7 @@ class PageComparaison3View extends GlobalView
 $menuView->content(2);
         ?>
 
-  <section class="comparaison_section mt-80">
+  <section class="comparaison_section mt-40">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 ">Démarrer votre comparaison</p>
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">( Il faut remplir au moins les 2
       premiers formulaires )</p>
@@ -57,14 +57,34 @@ $formComparView->content($marques, 1, true);
         <tr>
           <th class="text-3xl">Caractéristique</th>
           <th>
-            <img class="w-52 inline-block"
-              src="/cars-clash/public/images/vehicules<?php echo $vehicule_1['Image_vehicule'] ?>" alt="">
+          <form action="./redirect.php" method="post">
+              <input type="hidden" value="<?php echo $vehicule_1['ID_Vehicule'] ?>" name="idVehicule">
+              <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+            <button type="submit" name="show-car-details">
+              <img class="w-52 inline-block"
+                src="/cars-clash/public/images/vehicules<?php echo $vehicule_1['Image_vehicule'] ?>" alt="">
+            </button>
+          </form>
           </th>
-          <th><img class="w-52 inline-block"
-              src="/cars-clash/public/images/vehicules<?php echo $vehicule_2['Image_vehicule'] ?>" alt="">
+          <th>
+          <form action="./redirect.php" method="post">
+              <input type="hidden" value="<?php echo $vehicule_2['ID_Vehicule'] ?>" name="idVehicule">
+              <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+            <button type="submit" name="show-car-details">
+              <img class="w-52 inline-block"
+                src="/cars-clash/public/images/vehicules<?php echo $vehicule_2['Image_vehicule'] ?>" alt="">
+            </button>
+          </form>
           </th>
-          <th><img class="w-52 inline-block"
-              src="/cars-clash/public/images/vehicules<?php echo $vehicule_3['Image_vehicule'] ?>" alt="">
+          <th>
+          <form action="./redirect.php" method="post">
+              <input type="hidden" value="<?php echo $vehicule_3['ID_Vehicule'] ?>" name="idVehicule">
+              <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+            <button type="submit" name="show-car-details">
+              <img class="w-52 inline-block"
+                src="/cars-clash/public/images/vehicules<?php echo $vehicule_3['Image_vehicule'] ?>" alt="">
+            </button>
+          </form>
           </th>
         </tr>
       </thead>

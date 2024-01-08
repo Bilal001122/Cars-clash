@@ -28,8 +28,13 @@ class GestionAvisController
 
     public function showPageAvis()
     {
-        $view = new PageAvisView();
-        $view->showPageAvis();
+        if (isset($_SESSION['client'])) {
+            $view = new PageAvisView();
+            $view->showPageAvis();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
 }

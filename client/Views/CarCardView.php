@@ -3,7 +3,7 @@ require_once "Controllers/GestionMarquesController.php";
 class CarCardView
 {
 
-    public function content($vehicule)
+    public function content($vehicule, $isFromFav = false)
     {
         $marqueController = new GestionMarquesController();
         $fav = $marqueController->verifyIfFavoris($vehicule["ID_Vehicule"]);

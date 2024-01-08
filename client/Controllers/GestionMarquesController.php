@@ -57,7 +57,7 @@ class GestionMarquesController
         return $result;
     }
 
-    public function handleAddToFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false)
+    public function handleAddToFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false, $isFromFavorites = false)
     {
         $model = new GestionMarquesModel();
         $model->handleAddToFav($idClient, $idVehicule);
@@ -66,17 +66,21 @@ class GestionMarquesController
             header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
         } else if ($isFromGuideAchat) {
             header("Location: ./guide-achat?idClient=$idClient");
+        } else if ($isFromFavorites) {
+            header("Location: ./user-profil?idClient=$idClient");
         } else {
             header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
         }
     }
 
-    public function handleRemoveFromFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false)
+    public function handleRemoveFromFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false, $isFromFavorites = false)
     {
         $model = new GestionMarquesModel();
         $model->handleRemoveFromFav($idClient, $idVehicule);
         if ($bool == 1) {
             header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+        } else if ($isFromFavorites) {
+            header("Location: ./user-profil?idClient=$idClient");
         } else if ($isFromGuideAchat) {
             header("Location: ./guide-achat?idClient=$idClient");
         } else {
@@ -109,19 +113,42 @@ class GestionMarquesController
 
     public function showPageMarques()
     {
-        $view = new PageMarquesView();
-        $view->showPageMarques();
+        if (isset($_SESSION['client'])) {
+            $view = new PageMarquesView();
+            $view->showPageMarques();
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
     public function showPageMarque($idMarque)
     {
-        $view = new PageMarqueView();
-        $view->showPageMarque($idMarque);
+        if (isset($_SESSION['client'])) {
+            $view = new PageMarqueView();
+            $view->showPageMarque($idMarque);
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
+
     }
 
     public function showPageCarDetails($idClient, $idMarque, $idVehicule)
     {
-        $view = new PageCarDetailsView();
-        $view->showPageCarDetails($idClient, $idMarque, $idVehicule);
+        if (isset($_SESSION['client'])) {
+            $view = new PageCarDetailsView();
+            $view->showPageCarDetails($idClient, $idMarque, $idVehicule);
+        } else {
+            header('Location: /cars-clash/client/login');
+        }
     }
+
+    public function getOptionsMarque($selectedMarque)
+    {
+        $model = new GestionMarquesModel();
+        $modeles = $model->getOptionsMarque($selectedMarque);
+        return $modeles;
+
+    }
+
 }

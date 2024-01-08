@@ -19,7 +19,7 @@ class PageComparaisonView extends GlobalView
 $menuView->content(2);
         ?>
 
-  <section class="comparaison_section mt-80">
+  <section class="comparaison_section mt-40">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70">Démarrer votre comparaison</p>
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">( Il faut remplir au moins les 2
       premiers formulaires )</p>
@@ -44,8 +44,6 @@ $formComparView->content($marques, 1, true);
     </form>
   </section>
 </div>
-
-
 <?php
 }
 
