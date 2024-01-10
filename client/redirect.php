@@ -263,7 +263,6 @@ if (isset($_POST['demarer-comparaison'])) {
         $annee_2 = $_POST['annee_2'];
         $comparaisonController = new GestionComparaisonController();
         $comparaisonController->handleGotoPageComparaison2($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2);
-
     }
 }
 

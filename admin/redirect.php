@@ -135,6 +135,11 @@ if (isset($_POST['goto-guide-achat'])) {
     $paramsController->handleGotoGuideAchat();
 }
 
+if (isset($_POST['goto-contacts'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoContacts();
+}
+
 if (isset($_POST['goto-modifier-guide'])) {
     $idGuide = $_POST['ID_Guide'];
     $paramsController = new GestionParamsController();
@@ -194,4 +199,20 @@ if (isset($_POST['goto-ajouter-diapo'])) {
 if (isset($_POST['ajouter-diapo'])) {
     $paramsController = new GestionParamsController();
     $paramsController->handleAddDiaporama();
+}
+
+if (isset($_POST['goto-ajouter-contact'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoAddContact();
+}
+
+if (isset($_POST['ajouter-contact'])) {
+    $paramsController = new GestionParamsController();
+    $paramsController->handleAddContact();
+}
+
+if (isset($_POST['goto-modifier-contact'])) {
+    $idContact = $_POST['ID_Contact'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleGotoEditContact($idContact);
 }

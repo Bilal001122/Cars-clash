@@ -42,7 +42,9 @@ if (isset($_GET['idGuide'])) {
 if (isset($_GET['idDiapo'])) {
     $idDiapo = $_GET['idDiapo'];
 }
-
+if (isset($_GET['idContact'])) {
+    $idContact = $_GET['idContact'];
+}
 if (isset($_GET['failed'])) {
     $failed = $_GET['failed'];
 } else {
@@ -138,5 +140,20 @@ switch ($baseURL) {
     case "/cars-clash/admin/add-diaporama":
         $controller = new GestionParamsController();
         $controller->showPageAddDiaporama();
+        break;
+
+    case "/cars-clash/admin/contacts":
+        $controller = new GestionParamsController();
+        $controller->showPageContacts();
+        break;
+
+    case "/cars-clash/admin/add-contact":
+        $controller = new GestionParamsController();
+        $controller->showPageAddContacts();
+        break;
+
+    case "/cars-clash/admin/edit-contact":
+        $controller = new GestionParamsController();
+        $controller->showPageEditContacts($idContact);
         break;
 }

@@ -6,7 +6,7 @@ class GestionContactsModel extends ConnexionBdd
     {
         try {
             $database = $this->connexion();
-            $sql_query = "SELECT * FROM contacts";
+            $sql_query = "SELECT * FROM contact";
             $requete = $database->prepare($sql_query);
             $requete->execute();
             $result = $requete->fetchAll(PDO::FETCH_ASSOC);

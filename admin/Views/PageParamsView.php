@@ -49,9 +49,8 @@ class PageParamsView extends GlobalView
         </div>
         <div class="flex-1">
           <form action="./redirect.php" method="POST">
-            <button type="submit" name="goto-style-page"
-              class="bg-myprimary text-white p-4 rounded-md transform hover:scale-110 transition-all duration-300">Style
-              de la page</button>
+            <button type="submit" name="goto-contacts"
+              class="bg-myprimary text-white p-4 rounded-md transform hover:scale-110 transition-all duration-300">Contacts</button>
           </form>
         </div>
       </div>

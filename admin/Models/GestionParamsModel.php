@@ -17,6 +17,21 @@ class GestionParamsModel extends ConnexionBdd
         }
     }
 
+    public function getAllContacts()
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT * FROM contact";
+            $requete = $database->prepare($sql_query);
+            $requete->execute();
+            $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function getAllDiaporamas()
     {
         try {
@@ -149,6 +164,22 @@ class GestionParamsModel extends ConnexionBdd
             $requete->bindParam(':nom', $nom);
             $requete->bindParam(':lien', $lien);
             $requete->bindParam(':imageDiapoName', $imageDiapoName);
+            $requete->execute();
+            $this->deconnexion($database);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function addContact($nom, $lien, $imageContactName)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "INSERT INTO contact (Nom_Contact, Lien, image) VALUES (:nom, :lien, :imageContactName)";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':nom', $nom);
+            $requete->bindParam(':lien', $lien);
+            $requete->bindParam(':imageContactName', $imageContactName);
             $requete->execute();
             $this->deconnexion($database);
         } catch (Exception $e) {

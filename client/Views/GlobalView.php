@@ -1,5 +1,6 @@
 <?php
 require_once 'Controllers/GestionAccueilController.php';
+require_once 'Controllers/GestionContactsController.php';
 
 class GlobalView
 {
@@ -49,6 +50,8 @@ class GlobalView
 
     public function header()
     {
+        $contactsController = new GestionContactsController();
+        $contacts = $contactsController->getAllContacts();
         ?>
 <header class="header">
   <form action="./redirect.php" method="post">
@@ -61,7 +64,13 @@ class GlobalView
     </button>
   </form>
   <div class="social_links">
-    <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
+    <?php foreach ($contacts as $contact) {?>
+    <a href="<?php echo $contact['lien'] ?>" target="_blank" class="social_links_link">
+      <img title="<?php echo $contact['nom_contact'] ?>" src="/cars-clash/public/images/<?php echo $contact['image'] ?>"
+        alt="<?php echo $contact['nom_contact'] ?>" class="social_links_link_img">
+    </a>
+    <?php }?>
+    <!-- <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
       <img title="facebook" src="/cars-clash/public/images/facebook.png" alt="Facebook" class="social_links_link_img">
     </a>
     <a href="https://www.twitter.com/" target="_blank" class="social_links_link">
@@ -69,7 +78,7 @@ class GlobalView
     </a>
     <a href="https://www.linkedin.com/" target="_blank" class="social_links_link">
       <img title="linkedIn" src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
-    </a>
+    </a> -->
 
     <form action="./redirect.php" method="POST">
       <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>">
@@ -101,6 +110,8 @@ class GlobalView
 
     public function footer()
     {
+        $contactsController = new GestionContactsController();
+        $contacts = $contactsController->getAllContacts();
         ?>
 <div class="footer flex flex-col bg-white p-10 mt-20">
   <div class="grid grid-cols-5">
@@ -122,9 +133,11 @@ class GlobalView
     </div>
     <div class="flex flex-col gap-2">
       <p class="font-semibold mb-10 hover:underline transition-all duration-300 cursor-pointer">Réseaux sociaux</p>
-      <p class="hover:underline transition-all duration-300 cursor-pointer">Facebook</p>
-      <p class="hover:underline transition-all duration-300 cursor-pointer">LinkedIn</p>
-      <p class="hover:underline transition-all duration-300 cursor-pointer">Twitter</p>
+      <?php foreach ($contacts as $contact) {?>
+      <a href="<?php echo $contact['lien'] ?>" target="_blank">
+        <p class="hover:underline transition-all duration-300 cursor-pointer"><?php echo $contact['nom_contact'] ?></p>
+      </a>
+      <?php }?>
     </div>
   </div>
   <div class="flex pt-20 justify-between">
