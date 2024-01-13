@@ -9,7 +9,7 @@ class GestionAvisModel extends ConnexionBdd
     {
         try {
             $database = $this->connexion();
-            $sql_query = "SELECT avis.*, utilisateur.Nom_utilisateur
+            $sql_query = "SELECT avis.*, utilisateur.Nom_utilisateur, utilisateur.Prenom
                         FROM avis
                         INNER JOIN utilisateur ON avis.ID_utilisateur = utilisateur.ID_Utilisateur
                         WHERE avis.ID_Vehicule = :idVehicule AND avis.statut = 'Valide'
@@ -49,7 +49,7 @@ class GestionAvisModel extends ConnexionBdd
     {
         try {
             $database = $this->connexion();
-            $sql_query = "SELECT avis.*, utilisateur.Nom_utilisateur
+            $sql_query = "SELECT avis.*, utilisateur.Nom_utilisateur, utilisateur.Prenom
                         FROM avis
                         INNER JOIN utilisateur ON avis.ID_utilisateur = utilisateur.ID_Utilisateur
                         WHERE avis.ID_Vehicule = :idVehicule AND avis.statut = 'Valide'";

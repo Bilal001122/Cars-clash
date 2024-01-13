@@ -17,6 +17,21 @@ class GestionParamsModel extends ConnexionBdd
         }
     }
 
+    public function getContactById($idContact)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT * FROM contact WHERE id = :idContact";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idContact', $idContact);
+            $requete->execute();
+            $result = $requete->fetch(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
     public function getAllContacts()
     {
         try {
@@ -180,6 +195,37 @@ class GestionParamsModel extends ConnexionBdd
             $requete->bindParam(':nom', $nom);
             $requete->bindParam(':lien', $lien);
             $requete->bindParam(':imageContactName', $imageContactName);
+            $requete->execute();
+            $this->deconnexion($database);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function editContact($idContact, $nom, $lien, $imageContactName)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "UPDATE contact SET Nom_Contact = :nom, Lien = :lien, image = :imageContactName WHERE id = :idContact";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idContact', $idContact);
+            $requete->bindParam(':nom', $nom);
+            $requete->bindParam(':lien', $lien);
+            $requete->bindParam(':imageContactName', $imageContactName);
+            $requete->execute();
+            $this->deconnexion($database);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteContact($idContact)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "DELETE FROM contact WHERE id = :idContact";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idContact', $idContact);
             $requete->execute();
             $this->deconnexion($database);
         } catch (Exception $e) {

@@ -216,3 +216,15 @@ if (isset($_POST['goto-modifier-contact'])) {
     $paramsController = new GestionParamsController();
     $paramsController->handleGotoEditContact($idContact);
 }
+
+if (isset($_POST['modifier-contact'])) {
+    $idContact = $_POST['id-contact'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleEditContact();
+}
+
+if (isset($_POST['supprimer-contact'])) {
+    $idContact = $_POST['ID_Contact'];
+    $paramsController = new GestionParamsController();
+    $paramsController->handleDeleteContact($idContact);
+}

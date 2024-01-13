@@ -70,12 +70,22 @@ class GestionMarquesModel extends ConnexionBdd
     {
         try {
             $database = $this->connexion();
-            $sql_query = "SELECT * FROM vehicule WHERE ID_Marque = :idMarque LIMIT 4";
+
+            $sql_query = "SELECT v.*, AVG(n.Note) AS average_rating
+                          FROM vehicule v
+                          LEFT JOIN note n ON v.ID_Vehicule = n.ID_Vehicule
+                          WHERE v.ID_Marque = :idMarque
+                          GROUP BY v.ID_Vehicule
+                          ORDER BY average_rating DESC
+                          LIMIT 4";
+
             $requete = $database->prepare($sql_query);
             $requete->bindParam(':idMarque', $idMarque);
             $requete->execute();
+
             $result = $requete->fetchAll(PDO::FETCH_ASSOC);
             $this->deconnexion($database);
+
             return $result;
         } catch (Exception $e) {
             echo $e->getMessage();

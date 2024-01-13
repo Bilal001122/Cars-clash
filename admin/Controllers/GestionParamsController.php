@@ -27,6 +27,13 @@ class GestionParamsController
         return $diapo;
     }
 
+    public function getContactById($idContact)
+    {
+        $model = new GestionParamsModel();
+        $contact = $model->getContactById($idContact);
+        return $contact;
+    }
+
     public function getAllGuides()
     {
         $model = new GestionParamsModel();
@@ -46,6 +53,46 @@ class GestionParamsController
         $model = new GestionParamsModel();
         $allContacts = $model->getAllContacts();
         return $allContacts;
+    }
+
+    public function handleDeleteContact($idContact)
+    {
+        $model = new GestionParamsModel();
+        $model->deleteContact($idContact);
+        header('Location: ./contacts');
+    }
+
+    public function handleEditContact()
+    {
+        $nom = $_POST['contact_nom'];
+        $lien = $_POST['contact_lien'];
+        if (isset($_FILES["contact_image"])) {
+            $imageContact = $_FILES['contact_image'];
+        }
+        // uploader le ficher de l'image
+        if ($imageContact["error"] == 0) {
+            $r = explode(".", $imageContact["name"]);
+            $imageContactName = $r[0];
+            $imageContactExt = strtolower(end($r));
+
+            $tmpImage = $imageContact["tmp_name"];
+            while (!is_uploaded_file($tmpImage)) {
+                // attendre que le fichier soit uploadé
+            }
+            if (in_array($imageContactExt, array('jpg', 'jpeg', 'png', 'mp4'))) {
+                $imageDest = "../public/images/" . $imageContact["name"];
+                move_uploaded_file($tmpImage, $imageDest);
+            }
+            $imageContactName = "/" . $imageContactName;
+        } else {
+            $model = new GestionParamsModel();
+            $idContact = $_POST['id-contact'];
+            $result = $model->getContactById($idContact);
+            $imageContactName = $result['image'];
+        }
+        $model = new GestionParamsModel();
+        $model->editContact($idContact, $nom, $lien, $imageContactName);
+        header('Location: ./contacts');
     }
 
     public function handleGotoGuideAchat()

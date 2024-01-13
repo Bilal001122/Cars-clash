@@ -67,7 +67,7 @@ class GlobalView
     <?php foreach ($contacts as $contact) {?>
     <a href="<?php echo $contact['lien'] ?>" target="_blank" class="social_links_link">
       <img title="<?php echo $contact['nom_contact'] ?>" src="/cars-clash/public/images/<?php echo $contact['image'] ?>"
-        alt="<?php echo $contact['nom_contact'] ?>" class="social_links_link_img">
+        alt="<?php echo $contact['nom_contact'] ?>" class="social_links_link_img max-h-16">
     </a>
     <?php }?>
     <!-- <a href="https://www.facebook.com/" target="_blank" class="social_links_link">

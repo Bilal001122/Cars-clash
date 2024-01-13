@@ -119,4 +119,5 @@ switch ($baseURL) {
         $controller = new GestionAccueilController();
         $controller->showPageUserProfil($idClient);
         break;
+
 }

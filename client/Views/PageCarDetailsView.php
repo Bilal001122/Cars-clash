@@ -89,12 +89,13 @@ if (isset($_GET['isFromAvis'])) {
         if (!isset($_GET['isFromAvis'])) {
             ?>
   <!-- Les 3 avis les plus apprecis -->
-  <div class="flex flex-col gap-14">
+  <div class="flex flex-col gap-4">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Les 3 avis les plus apprécis
     </p>
     <?php foreach ($threeAvis as $avis) {?>
-    <div class="flex flex-col gap-14 bg-white p-20 rounded-2xl drop-shadow-2xl">
-      <p class=" animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?></p>
+    <div class="flex flex-col gap-2 bg-white p-4 rounded-xl drop-shadow-2xl">
+      <p class=" animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?>
+        <?php echo $avis['Prenom'] ?></p>
       <p><?php echo $avis['Commentaire'] ?></p>
     </div>
     <?php }?>
@@ -106,16 +107,95 @@ if (isset($_GET['isFromAvis'])) {
 
   <!-- Tous les avis -->
 
-  <div class="flex flex-col gap-14">
+  <!-- <div class="flex flex-col gap-14">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Touts les avis
     </p>
     <?php foreach ($allAvis as $avis) {?>
     <div class="flex flex-col gap-14 bg-white p-20 rounded-2xl drop-shadow-2xl">
-      <p class=" animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?></p>
+      <p class=" animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?>
+        <?php echo $avis['Prenom'] ?></p>
       <p><?php echo $avis['Commentaire'] ?></p>
     </div>
     <?php }?>
+  </div> -->
+
+  <!-- Tous les avis -->
+
+  <div id="avis-carousel" class="carousel">
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Touts les avis
+
+      <?php
+$chunkedAvis = array_chunk($allAvis, 3); // Divisez les avis en groupes de 3
+        foreach ($chunkedAvis as $index => $slideAvis) {
+            echo '<div class="carousel-item' . ($index == 0 ? ' active' : '') . '">';
+            ?>
+    <div class="flex flex-col gap-4">
+      <?php foreach ($slideAvis as $avis) {?>
+      <div class="flex flex-col gap-2 bg-white p-4 rounded-xl drop-shadow-2xl ">
+        <p class="animate-bounce text-myprimary font-semibold text-3xl"><?php echo $avis['Nom_utilisateur'] ?>
+          <?php echo $avis['Prenom'] ?></p>
+        <p><?php echo $avis['Commentaire'] ?></p>
+      </div>
+      <?php }?>
+    </div>
+    <?php
+echo '</div>';
+        }
+        ?>
   </div>
+
+  <div class="flex justify-between px-20">
+
+    <button class=" rounded-2xl  p-3 bg-myprimary text-white text-2xl" onclick="prevSlide()">Précédent</button>
+    <button class=" rounded-2xl  p-3 bg-myprimary text-white text-2xl" onclick="nextSlide()">Suivant</button>
+  </div>
+
+  <script>
+  let currentSlide = 0;
+  const carouselItems = document.querySelectorAll('.carousel-item');
+  const prevButton = document.querySelector('.rounded-2xl.p-3.bg-myprimary.text-white.text-2xl[onclick="prevSlide()"]');
+  const nextButton = document.querySelector('.rounded-2xl.p-3.bg-myprimary.text-white.text-2xl[onclick="nextSlide()"]');
+
+  function updateButtons() {
+    if (currentSlide === 0) {
+      prevButton.disabled = true;
+      prevButton.style.opacity = 0.2;
+    } else {
+      prevButton.disabled = false;
+      prevButton.style.opacity = 1;
+    }
+
+    if (currentSlide === carouselItems.length - 1) {
+      nextButton.disabled = true;
+      nextButton.style.opacity = 0.2;
+    } else {
+      nextButton.disabled = false;
+      nextButton.style.opacity = 1;
+    }
+
+  }
+
+  function showSlide(index) {
+    currentSlide = (index + carouselItems.length) % carouselItems.length;
+
+    carouselItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    carouselItems[currentSlide].classList.add('active');
+    updateButtons();
+  }
+
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  updateButtons(); // Appeler la fonction au chargement de la page pour initialiser l'état des boutons
+  </script>
 
   <!-- Fin tous les avis -->
 </div>

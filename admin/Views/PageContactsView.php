@@ -64,8 +64,8 @@ foreach ($allContacts as $contact) {
                   <td class="w-1/6"><?php echo $contact['nom_contact'] ?></td>
                   <td class="text-ellipsis w-2/6"><?php echo $contact['lien'] ?></td>
                   <td>
-                    <img class="max-h-24 mx-auto "
-                      src="/cars-clash/public/images/<?php echo $contact['image'] ?>" alt="">
+                    <img class="max-h-24 mx-auto " src="/cars-clash/public/images/<?php echo $contact['image'] ?>"
+                      alt="">
                   </td>
                   <td class="actions_container">
                     <form class="d-inline-block" action="./redirect.php" method="POST">

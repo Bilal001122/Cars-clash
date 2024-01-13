@@ -22,7 +22,7 @@ $menuView->content(6);
       <a href="<?php echo $contact['lien'] ?>" target="_blank"
         class="hover:scale-110 transition-all duration-300 social_links_link flex flex-col items-center justify-center">
         <img title="linkedIn" src="/cars-clash/public/images/<?php echo $contact['image'] ?>" alt=""
-          class="mb-10 social_links_link_img">
+          class="mb-10 social_links_link_img max-h-24">
         <p class="text-3xl text-myprimary font-bold"><?php echo $contact['nom_contact'] ?></p>
       </a>
       <?php }?>

@@ -273,3 +273,26 @@ if (isset($_POST['user-profil'])) {
     $accueilController = new GestionAccueilController();
     $accueilController->handleGotoPageUserProfil($idClient);
 }
+
+if (isset($_POST['update-user-info'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    if (isset($_POST['nom'])) {
+        $nom = $_POST['nom'];
+    }
+    if (isset($_POST['prenom'])) {
+        $prenom = $_POST['prenom'];
+    }
+    if (isset($_POST['email_user'])) {
+        $email = $_POST['email_user'];
+    }
+    if (isset($_POST['sexe'])) {
+        $sexe = $_POST['sexe'];
+    }
+    if (isset($_POST['date-naissance'])) {
+        $dateNaissance = $_POST['date-naissance'];
+    }
+    $userController = new GestionUserController();
+    $userController->handleUpdateUserInfo($idClient, $nom, $prenom, $email, $sexe, $dateNaissance);
+}
