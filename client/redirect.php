@@ -296,3 +296,15 @@ if (isset($_POST['update-user-info'])) {
     $userController = new GestionUserController();
     $userController->handleUpdateUserInfo($idClient, $nom, $prenom, $email, $sexe, $dateNaissance);
 }
+
+if (isset($_POST['add-note-marque'])) {
+    if (isset($_POST['idClient'])) {
+        $idClient = $_POST['idClient'];
+    }
+    if (isset($_POST['idMarque'])) {
+        $idMarque = $_POST['idMarque'];
+    }
+    $note = $_POST['note'];
+    $marqueController = new GestionMarquesController();
+    $marqueController->handleAddNoteToMarque($idClient, $idMarque, $note);
+}

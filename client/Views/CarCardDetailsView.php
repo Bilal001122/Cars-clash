@@ -15,8 +15,7 @@ class CarCardDetailsView
   <img class="image_for_details_screen"
     src="/cars-clash/public/images/vehicules<?php echo $vehicule['Image_vehicule'] ?>" alt="">
 </div>
-<div
-id="card_details_for_car"
+<div id="card_details_for_car"
   class=" card_details_for_car grid grid-cols-2 grow place-content-center gap-12 bg-white p-20 rounded-2xl drop-shadow-2xl relative">
 
   <?php

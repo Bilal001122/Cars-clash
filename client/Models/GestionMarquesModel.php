@@ -286,4 +286,56 @@ class GestionMarquesModel extends ConnexionBdd
         }
     }
 
+    public function handleAddNoteToMarque($idClient, $idMarque, $note)
+    {
+        try {
+            $database = $this->connexion();
+
+            // Check if a note exists for the given user and marque
+            $check_query = "SELECT ID_Note FROM note_marque WHERE ID_utilisateur = :idClient AND ID_Marque = :idMarque";
+            $check_statement = $database->prepare($check_query);
+            $check_statement->bindParam(':idClient', $idClient);
+            $check_statement->bindParam(':idMarque', $idMarque);
+            $check_statement->execute();
+            $existing_note = $check_statement->fetch();
+
+            if ($existing_note) {
+                // Update the existing note
+                $update_query = "UPDATE note_marque SET Note = :note WHERE ID_Note = :existingNoteId";
+                $update_statement = $database->prepare($update_query);
+                $update_statement->bindParam(':note', $note);
+                $update_statement->bindParam(':existingNoteId', $existing_note['ID_Note']);
+                $update_statement->execute();
+            } else {
+                // Insert the new note
+                $insert_query = "INSERT INTO note_marque (ID_utilisateur, ID_Marque, Note) VALUES (:idClient, :idMarque, :note)";
+                $insert_statement = $database->prepare($insert_query);
+                $insert_statement->bindParam(':idClient', $idClient);
+                $insert_statement->bindParam(':idMarque', $idMarque);
+                $insert_statement->bindParam(':note', $note);
+                $insert_statement->execute();
+            }
+
+            $this->deconnexion($database);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getNoteMoyenneMarque($idMarque)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT ROUND(AVG(Note),1) AS moyenne FROM note_marque WHERE ID_Marque = :idMarque";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idMarque', $idMarque);
+            $requete->execute();
+            $result = $requete->fetch(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }

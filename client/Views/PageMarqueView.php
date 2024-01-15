@@ -14,6 +14,7 @@ class PageMarqueView extends GlobalView
         $fourVehicules = $marqueController->getFourVehicules($idMarque);
         $menuView = new MenuView();
         $cardView = new CarCardView();
+        $noteMoyenneMarque = $marqueController->getNoteMoyenneMarque($idMarque);
 
         ?>
 <div class="body w-11/12 mx-auto my-0">
@@ -45,7 +46,32 @@ if (isset($_GET['isFromAvis'])) {
         <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Année de création:</p>
         <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $marque["Annee_de_creation"] ?></p>
       </div>
+      <div class="flex justify-start items-center">
+        <p class="font-bold text-myaccent mr-24 text-4xl w-4/12">Note moyenne:</p>
+        <p class="font-bold text-myprimary mr-24 text-4xl opacity-50"><?php echo $noteMoyenneMarque["moyenne"] ?></p>
+      </div>
     </div>
+  </div>
+
+  <div class="bg-white p-10 pb-20 rounded-2xl drop-shadow-2xl w-4/12 mt-24">
+    <form class="grid grid-cols-5 gap-x-10" action="./redirect.php" method="post">
+      <input type="hidden" value="<?php echo $marque['ID_Marque'] ?>" name="idMarque">
+      <input type="hidden" value="<?php echo $_GET['idClient'] ?>" name="idClient">
+      <p class="font-bold text-4xl py-4 col-span-5">Donnez une note /10</p>
+      <div class="col-span-3 place-content-start">
+        <div class="flex flex-col">
+          <label class="font-bold py-4" for="note">Note</label>
+          <input placeholder="Note"
+            class="p-3 w-12/12 bg-myaccent bg-opacity-5 rounded-xl ring-2 ring-gray-300 focus:outline-none focus:ring-myprimary focus:ring-2"
+            type="number" name="note" id="note" min="0" max="10" required>
+        </div>
+      </div>
+      <div class="w-full hover:scale-125 transition-all duration-300 col-span-2 place-self-end scale-110">
+        <button class=" rounded-2xl w-full p-3 bg-myprimary text-white text-2xl" type="submit" name="add-note-marque">
+          Valider
+        </button>
+      </div>
+    </form>
   </div>
 
   <div id="principales_vehicules" class="principales_vehicules flex flex-col mt-44">

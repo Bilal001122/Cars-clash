@@ -49,6 +49,13 @@ class GestionMarquesController
         return $result;
     }
 
+    public function getNoteMoyenneMarque($idMarque)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getNoteMoyenneMarque($idMarque);
+        return $result;
+    }
+
     public function verifyIfFavoris($idVehicule)
     {
         $idClient = $_GET['idClient'];
@@ -62,6 +69,13 @@ class GestionMarquesController
         $model = new GestionMarquesModel();
         $result = $model->getFavoris($idClient);
         return $result;
+    }
+
+    public function handleAddNoteToMarque($idClient, $idMarque, $note)
+    {
+        $model = new GestionMarquesModel();
+        $model->handleAddNoteToMarque($idClient, $idMarque, $note);
+        header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
     }
 
     public function handleAddToFav($idClient, $idVehicule = 0, $idMarque = 0, $bool = 0, $isFromGuideAchat = false, $isFromFavorites = false)
