@@ -126,41 +126,28 @@ class GestionVehiculesController
 
     public function showPageEditVehicule($idVehicule)
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageEditVehiculeView();
-            $view->showPageEditVehicule($idVehicule);
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+        $view = new PageEditVehiculeView();
+        $view->showPageEditVehicule($idVehicule);
+
     }
 
     public function showPageVehicule()
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageVehiculesView();
-            $view->showPageVehicule();
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+        $view = new PageVehiculesView();
+        $view->showPageVehicule();
+
     }
 
     public function showPageDetailsVehicule($idVehicule)
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageDetailsVehiculeView();
-            $view->showPageDetailsVehicule($idVehicule);
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+        $view = new PageDetailsVehiculeView();
+        $view->showPageDetailsVehicule($idVehicule);
 
     }
 
     public function showPageAddVehicule()
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageAddVehiculeView();
-            $view->showPageAddVehicule();} else {
-            header('Location: /cars-clash/admin/login');
-        }
+        $view = new PageAddVehiculeView();
+        $view->showPageAddVehicule();
     }
 }

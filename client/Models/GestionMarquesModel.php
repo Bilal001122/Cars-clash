@@ -155,6 +155,25 @@ class GestionMarquesModel extends ConnexionBdd
         }
     }
 
+    public function getVehiculeForTopThree($idVehicule)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT *
+            FROM vehicule v
+            JOIN marque m ON v.id_marque = m.id_marque
+            WHERE v.ID_Vehicule = :idVehicule;";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':idVehicule', $idVehicule);
+            $requete->execute();
+            $result = $requete->fetch(PDO::FETCH_ASSOC);
+            $this->deconnexion($database);
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function handleAddNoteToCar($idClient, $idVehicule, $note)
     {
         try {

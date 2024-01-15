@@ -23,7 +23,9 @@ class PageUserView extends GlobalView
         <div
           class="grid grid-cols-3 gap-10 bg-white rounded-2xl drop-shadow-2xl px-28 py-10 place-content-center w-full">
           <div class="flex flex-col items-center justify-center place-content-center">
-            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="rounded-full w-40 h-40">
+            <img
+              src="<?php if ($user['Sexe'] === 'Homme') {echo '/cars-clash/public/images/man.png';} else {echo '/cars-clash/public/images/woman.png';}?>"
+              alt="Avatar" class="rounded-full w-40 h-40">
           </div>
           <div class="flex justify-center items-center">
             <p class="text-center text-myaccent text-3xl font-bold pb-10 opacity-70  ">Nom: </p>
@@ -40,8 +42,8 @@ class PageUserView extends GlobalView
           <div class="flex flex-col justify-center items-center">
             <p class="text-center text-myaccent text-3xl font-bold pb-10 opacity-70  ">Sexe: </p>
             <select name="sexe" class="text-center text-myprimary text-3xl font-bold pb-2 opacity-70">
-              <option value="Homme">Homme</option>
-              <option value="Femme">Femme</option>
+              <option value="Homme" <?php  if ($user['Sexe'] === 'Homme') {echo 'selected';}?>>Homme</option>
+              <option value="Femme" <?php  if ($user['Sexe'] === 'Femme') {echo 'selected';}?>>Femme</option>
             </select>
           </div>
           <div class="flex justify-center items-center">

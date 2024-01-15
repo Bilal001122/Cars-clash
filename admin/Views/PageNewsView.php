@@ -61,7 +61,7 @@ foreach ($allNews as $news) {
                 <tr>
                   <td><?php echo $news['ID_News'] ?></td>
                   <td class="w-1/6"><?php echo $news['Titre'] ?></td>
-                  <td class="text-ellipsis w-2/6"><?php echo $news['Contenu'] ?></td>
+                  <td class="text-ellipsis w-2/6 max-h-10"><?php echo $news['Contenu'] ?></td>
                   <td>
                     <img class="max-h-24 mx-auto " src="/cars-clash/public/images/news<?php echo $news['Image'] ?>"
                       alt="">

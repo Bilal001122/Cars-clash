@@ -99,31 +99,22 @@ class GestionNewsController
 
     public function showPageEditNews($idNews)
     {
-        if (isset($_SESSION['admin'])) {
             $view = new PageEditNewsView();
             $view->showPageEditNews($idNews);
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+     
     }
 
     public function showPageNews()
     {
-        if (isset($_SESSION['admin'])) {
             $view = new PageNewsView();
             $view->showPageNews();
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+      
     }
 
     public function showPageAddNews()
     {
-        if (isset($_SESSION['admin'])) {
             $view = new PageAddNewsView();
             $view->showPageAddNews();
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+       
     }
 }

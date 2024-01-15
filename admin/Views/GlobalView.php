@@ -49,8 +49,8 @@ class GlobalView
         ?>
 <header class="header">
   <div class="header_logo">
-    <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class="header_logo_img">
-    <p class="header_logo_text">CARS CLASH</p>
+    <img src="/cars-clash/public/images/logo_without_bg.png" alt="logo" class=" header_logo_img">
+    <p class="header_logo_text animate-bounce">CARS CLASH</p>
   </div>
   <div class="social_links">
     <a href="https://www.facebook.com/" target="_blank" class="social_links_link">
@@ -63,9 +63,6 @@ class GlobalView
       <img src="/cars-clash/public/images/linkedIn.png" alt="LinkedIn" class="social_links_link_img">
     </a>
     <form class="form_dcnx" action="./redirect.php" method="post">
-      <!-- <button type="submit" class="deconnexion_btn" name="logout">
-        Se déconnecter
-      </button> -->
       <button type="submit" name="logout">
         <ion-icon class="modify-icon text-red-600 size-8 p-3 " name="log-in-outline" title="se déconnecter">
         </ion-icon>

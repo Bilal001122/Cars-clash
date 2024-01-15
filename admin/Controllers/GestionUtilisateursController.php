@@ -29,12 +29,8 @@ class GestionUtilisateurController
 
     public function showPageUtilisateur()
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageUtilisateurView();
-            $view->showPageUtilisateurs();    
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
-        
+        $view = new PageUtilisateurView();
+        $view->showPageUtilisateurs();
+
     }
 }

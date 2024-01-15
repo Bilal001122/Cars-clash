@@ -21,6 +21,13 @@ class GestionMarquesController
         return $result;
     }
 
+    public function getVehiculeForTopThree($idVehicule)
+    {
+        $model = new GestionMarquesModel();
+        $result = $model->getVehiculeForTopThree($idVehicule);
+        return $result;
+    }
+
     public function getAllVehicules($idMarque)
     {
         $model = new GestionMarquesModel();

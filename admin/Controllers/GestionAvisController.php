@@ -37,11 +37,8 @@ class GestionAvisController
 
     public function showPageAvis()
     {
-        if (isset($_SESSION['admin'])) {
-            $view = new PageAvisView();
-            $view->showPageAvis();
-        } else {
-            header('Location: /cars-clash/admin/login');
-        }
+        $view = new PageAvisView();
+        $view->showPageAvis();
+
     }
 }

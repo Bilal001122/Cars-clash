@@ -314,3 +314,20 @@ body {
   color: var(--white-color);
   text-align: center;
 }
+
+.car_to_animate {
+  right: -20rem;
+  position: absolute;
+  animation: carAnimation 3s infinite;
+  z-index: -10;
+}
+
+@keyframes carAnimation {
+  0% {
+    right: -20rem;
+  }
+
+  100% {
+    right: 100%;
+  }
+}

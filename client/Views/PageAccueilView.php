@@ -104,8 +104,26 @@ $formComparView->content($marques, 1, true);
     <div class="flex w-full justify-center mb-20">
       <?php
 $compareCardView->content($marqueController->getVehicule($comparaison['ID_Vehicule1']));
+            $vehicule1 = $marqueController->getVehiculeForTopThree($comparaison['ID_Vehicule1']);
+            $vehicule2 = $marqueController->getVehiculeForTopThree($comparaison['ID_Vehicule2']);
             ?>
-      <p class="text-9xl text-myprimary font-bold grow justify-self-center self-center text-center">VS</p>
+      <div class="flex flex-col justify-around items-center px-24">
+        <p class="text-9xl text-myprimary font-bold text-center">VS</p>
+        <form action="./redirect.php" method="post">
+          <input type="hidden" name="idClient" value="<?php echo $_GET['idClient'] ?>">
+          <input type="hidden" name="marque_1" value="<?php echo $vehicule1['Nom_marque'] ?>">
+          <input type="hidden" name="marque_2" value="<?php echo $vehicule2['Nom_marque'] ?>">
+          <input type="hidden" name="modele_1" value="<?php echo $vehicule1['Modele'] ?>">
+          <input type="hidden" name="modele_2" value="<?php echo $vehicule2['Modele'] ?>">
+          <input type="hidden" name="version_1" value="<?php echo $vehicule1['Version'] ?>">
+          <input type="hidden" name="version_2" value="<?php echo $vehicule2['Version'] ?>">
+          <input type="hidden" name="annee_1" value="<?php echo $vehicule1['Annee'] ?>">
+          <input type="hidden" name="annee_2" value="<?php echo $vehicule2['Annee'] ?>">
+          <button
+            class="animate-pulse bg-myprimary text-white font-bold p-3 text-2xl rounded-xl hover:scale-110 transition-all duration-300"
+            type="submit" name="demarer-comparaison">Comparer</button>
+        </form>
+      </div>
       <?php
 $compareCardView->content($marqueController->getVehicule($comparaison['ID_Vehicule2']));
             ?>

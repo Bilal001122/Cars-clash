@@ -47,6 +47,7 @@ if ($failed == '1') {
       </button>
     </form>
   </div>
+  <img class="car_to_animate" src="/cars-clash/public/images/anim_car.png" alt="">
 </div>
 <?php
 
