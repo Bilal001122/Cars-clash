@@ -39,7 +39,7 @@ var selectedVersion1, selectedVersion2, selectedVersion3, selectedVersion4;
 function getOptionsMarque(numeroVoiture, selectedMarque) {
   $.ajax({
     type: "POST",
-    url: "/cars-clash/client/Models/getOptionsMarque.php",
+    url: "/cars-clash/client/api.php",
     data: { marque: selectedMarque },
     success: function (response) {
       console.log(response);
@@ -66,7 +66,7 @@ function getOptionsMarque(numeroVoiture, selectedMarque) {
 function getOptionsModele(numeroVoiture, selectedMarque, selectedModele) {
   $.ajax({
     type: "POST",
-    url: "/cars-clash/client/Models/getOptionsModele.php",
+    url: "/cars-clash/client/api.php",
     data: { modele: selectedModele, marque: selectedMarque },
     success: function (response) {
       const versions = JSON.parse(response);
@@ -97,7 +97,7 @@ function getOptionsVersion(
 ) {
   $.ajax({
     type: "POST",
-    url: "/cars-clash/client/Models/getOptionsVersion.php",
+    url: "/cars-clash/client/api.php",
     data: {
       version: selectedVersion,
       modele: selectedModele,

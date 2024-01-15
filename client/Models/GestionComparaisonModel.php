@@ -128,4 +128,81 @@ class GestionComparaisonModel extends ConnexionBdd
         }
     }
 
+    public function getOptionsMarque($marque)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT DISTINCT v.Modele
+            FROM vehicule v
+            INNER JOIN marque m ON v.id_marque = m.id_marque
+            WHERE m.Nom_marque = :selectedMarque";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':selectedMarque', $marque);
+            $requete->execute();
+            $modeles = [];
+            if ($requete->rowCount() > 0) {
+                while ($row = $requete->fetch(PDO::FETCH_ASSOC)) {
+                    $modeles[] = $row['Modele'];
+                }
+            }
+            $this->deconnexion($database);
+            return $modeles;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getOptionsModele($marque, $modele)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT DISTINCT v.Version
+            FROM vehicule v
+            INNER JOIN marque m ON v.id_marque = m.id_marque
+            WHERE m.Nom_marque = :selectedMarque
+            AND v.Modele = :selectedModele";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':selectedMarque', $marque);
+            $requete->bindParam(':selectedModele', $modele);
+            $requete->execute();
+            $versions = [];
+            if ($requete->rowCount() > 0) {
+                while ($row = $requete->fetch(PDO::FETCH_ASSOC)) {
+                    $versions[] = $row['Version'];
+                }
+            }
+            $this->deconnexion($database);
+            return $versions;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getOptionsVersion($marque, $modele, $version)
+    {
+        try {
+            $database = $this->connexion();
+            $sql_query = "SELECT DISTINCT v.Annee
+            FROM vehicule v
+            INNER JOIN marque m ON v.id_marque = m.id_marque
+            WHERE m.Nom_marque = :selectedMarque
+            AND v.Modele = :selectedModele
+            AND v.Version = :selectedVersion";
+            $requete = $database->prepare($sql_query);
+            $requete->bindParam(':selectedMarque', $marque);
+            $requete->bindParam(':selectedModele', $modele);
+            $requete->bindParam(':selectedVersion', $version);
+            $requete->execute();
+            $annees = [];
+            if ($requete->rowCount() > 0) {
+                while ($row = $requete->fetch(PDO::FETCH_ASSOC)) {
+                    $annees[] = $row['Annee'];
+                }
+            }
+            $this->deconnexion($database);
+            return $annees;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 }

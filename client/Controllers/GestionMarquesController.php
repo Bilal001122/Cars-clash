@@ -63,13 +63,13 @@ class GestionMarquesController
         $model->handleAddToFav($idClient, $idVehicule);
 
         if ($bool == 1) {
-            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule#card_details_for_car");
         } else if ($isFromGuideAchat) {
-            header("Location: ./guide-achat?idClient=$idClient");
+            header("Location: ./guide-achat?idClient=$idClient#vehicules-carousel");
         } else if ($isFromFavorites) {
-            header("Location: ./user-profil?idClient=$idClient");
+            header("Location: ./user-profil?idClient=$idClient#vehicules-carousel");
         } else {
-            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque#principales_vehicules");
         }
     }
 
@@ -78,13 +78,13 @@ class GestionMarquesController
         $model = new GestionMarquesModel();
         $model->handleRemoveFromFav($idClient, $idVehicule);
         if ($bool == 1) {
-            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule");
+            header("Location: ./car-details?idClient=$idClient&idMarque=$idMarque&idVehicule=$idVehicule#card_details_for_car");
         } else if ($isFromFavorites) {
-            header("Location: ./user-profil?idClient=$idClient");
+            header("Location: ./user-profil?idClient=$idClient#vehicules-carousel");
         } else if ($isFromGuideAchat) {
-            header("Location: ./guide-achat?idClient=$idClient");
+            header("Location: ./guide-achat?idClient=$idClient#vehicules-carousel");
         } else {
-            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque");
+            header("Location: ./marque?idClient=$idClient&idMarque=$idMarque#principales_vehicules");
         }
     }
 

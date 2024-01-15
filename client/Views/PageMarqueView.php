@@ -48,7 +48,7 @@ if (isset($_GET['isFromAvis'])) {
     </div>
   </div>
 
-  <div class="principales_vehicules flex flex-col mt-44">
+  <div id="principales_vehicules" class="principales_vehicules flex flex-col mt-44">
     <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10">Principales voitures</p>
     <div class="grid grid-cols-4 gap-10">
       <?php foreach ($fourVehicules as $vehicule) {

@@ -41,17 +41,17 @@ class GestionComparaisonController
 
     public function handleGotoPageComparaison2($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2)
     {
-        header('Location: comparaison2?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2);
+        header('Location: comparaison2?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2 . '#table-result');
     }
 
     public function handleGotoPageComparaison3($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2, $marque_3, $modele_3, $version_3, $annee_3)
     {
-        header('Location: comparaison3?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2 . '&marque_3=' . $marque_3 . '&modele_3=' . $modele_3 . '&version_3=' . $version_3 . '&annee_3=' . $annee_3);
+        header('Location: comparaison3?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2 . '&marque_3=' . $marque_3 . '&modele_3=' . $modele_3 . '&version_3=' . $version_3 . '&annee_3=' . $annee_3 . '#table-result');
     }
 
     public function handleGotoPageComparaison4($idClient, $marque_1, $modele_1, $version_1, $annee_1, $marque_2, $modele_2, $version_2, $annee_2, $marque_3, $modele_3, $version_3, $annee_3, $marque_4, $modele_4, $version_4, $annee_4)
     {
-        header('Location: comparaison4?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2 . '&marque_3=' . $marque_3 . '&modele_3=' . $modele_3 . '&version_3=' . $version_3 . '&annee_3=' . $annee_3 . '&marque_4=' . $marque_4 . '&modele_4=' . $modele_4 . '&version_4=' . $version_4 . '&annee_4=' . $annee_4);
+        header('Location: comparaison4?idClient=' . $idClient . '&marque_1=' . $marque_1 . '&modele_1=' . $modele_1 . '&version_1=' . $version_1 . '&annee_1=' . $annee_1 . '&marque_2=' . $marque_2 . '&modele_2=' . $modele_2 . '&version_2=' . $version_2 . '&annee_2=' . $annee_2 . '&marque_3=' . $marque_3 . '&modele_3=' . $modele_3 . '&version_3=' . $version_3 . '&annee_3=' . $annee_3 . '&marque_4=' . $marque_4 . '&modele_4=' . $modele_4 . '&version_4=' . $version_4 . '&annee_4=' . $annee_4 . '#table-result');
     }
 
     public function showPageComparaison()
@@ -95,5 +95,26 @@ class GestionComparaisonController
         } else {
             header('Location: /cars-clash/client/login');
         }
+    }
+
+    public function getOptionsMarque($marque)
+    {
+        $gestionComparaisonModel = new GestionComparaisonModel();
+        $optionsMarque = $gestionComparaisonModel->getOptionsMarque($marque);
+        return $optionsMarque;
+    }
+
+    public function getOptionsModele($marque, $modele)
+    {
+        $gestionComparaisonModel = new GestionComparaisonModel();
+        $optionsModele = $gestionComparaisonModel->getOptionsModele($marque, $modele);
+        return $optionsModele;
+    }
+
+    public function getOptionsVersion($marque, $modele, $version)
+    {
+        $gestionComparaisonModel = new GestionComparaisonModel();
+        $optionsVersion = $gestionComparaisonModel->getOptionsVersion($marque, $modele, $version);
+        return $optionsVersion;
     }
 }

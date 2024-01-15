@@ -48,7 +48,7 @@ $formComparView->content($marques, 1, true);
       </div>
     </form>
 
-    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Voici le résultat de la
+    <p id="table-result" class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Voici le résultat de la
       comparaison
     </p>
     <table class="table_compare w-full bg-white">
