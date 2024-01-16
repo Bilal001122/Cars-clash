@@ -122,7 +122,7 @@ if (isset($_GET['isFromAvis'])) {
   <!-- Tous les avis -->
 
   <div id="avis-carousel" class="carousel">
-    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Touts les avis
+    <p class="text-center text-myprimary text-5xl font-bold pb-10 opacity-70 mb-10 mt-32">Tous les avis
 
       <?php
 $chunkedAvis = array_chunk($allAvis, 3); // Divisez les avis en groupes de 3
