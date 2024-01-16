@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 15, 2024 at 09:15 PM
+-- Generation Time: Jan 16, 2024 at 05:59 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `Email` varchar(100) DEFAULT NULL,
   `Mot_de_passe` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_Admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admins`
@@ -61,7 +61,20 @@ CREATE TABLE IF NOT EXISTS `avis` (
   PRIMARY KEY (`ID_Avis`),
   KEY `fk_avis_user` (`ID_Utilisateur`),
   KEY `fk_avis_vehicule` (`ID_Vehicule`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `avis`
+--
+
+INSERT INTO `avis` (`ID_Avis`, `ID_Utilisateur`, `ID_Vehicule`, `Commentaire`, `Statut`) VALUES
+(1, 21, 92, 'Performance exceptionnelle', 'Valide'),
+(3, 21, 86, 'Securite exceptionnelle', 'Valide'),
+(5, 21, 91, 'Performance exceptionnelle', 'Valide'),
+(6, 6, 91, 'Entretien abordable', 'Valide'),
+(7, 8, 92, 'Insonorisation exceptionnelle', 'Valide'),
+(8, 8, 91, 'Insonorisation exceptionnelle', 'Valide'),
+(9, 22, 91, 'Design bien', 'Valide');
 
 -- --------------------------------------------------------
 
@@ -81,22 +94,27 @@ CREATE TABLE IF NOT EXISTS `comparaison` (
   KEY `fk_comparaison_vehicule2` (`ID_Vehicule2`),
   KEY `fk_comparaison_vehicule3` (`ID_Vehicule3`),
   KEY `fk_comparaison_vehicule4` (`ID_Vehicule4`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comparaison`
 --
 
 INSERT INTO `comparaison` (`ID_Comparaison`, `ID_Vehicule1`, `ID_Vehicule2`, `ID_Vehicule3`, `ID_Vehicule4`) VALUES
-(200, 87, 86, NULL, NULL),
-(201, 87, 86, NULL, NULL),
-(202, 87, 86, NULL, NULL),
-(203, 86, 88, NULL, NULL),
-(204, 86, 88, NULL, NULL),
-(205, 86, 88, NULL, NULL),
-(206, 87, 86, NULL, NULL),
-(207, 86, 88, NULL, NULL),
-(208, 86, 88, NULL, NULL);
+(215, 91, 93, NULL, NULL),
+(216, 91, 93, NULL, NULL),
+(217, 91, 93, NULL, NULL),
+(218, 102, 97, NULL, NULL),
+(219, 102, 97, NULL, NULL),
+(220, 102, 97, NULL, NULL),
+(221, 99, 98, NULL, NULL),
+(222, 93, 93, 102, NULL),
+(223, 93, 86, 96, 99),
+(224, 93, 86, 96, 99),
+(225, 93, 86, 96, 99),
+(226, 93, 86, 96, 99),
+(227, 93, 86, 96, 99),
+(228, 93, 86, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `lien` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contact`
@@ -135,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `diaporama` (
   `Chemin_Image` varchar(200) DEFAULT NULL,
   `Lien` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`ID_Image`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `diaporama`
@@ -161,7 +179,16 @@ CREATE TABLE IF NOT EXISTS `favoris_utilisateur_vehicule` (
   PRIMARY KEY (`ID_Favori`),
   KEY `fk_favoris_user` (`ID_Utilisateur`),
   KEY `fk_favoris_vehicule` (`ID_Vehicule`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `favoris_utilisateur_vehicule`
+--
+
+INSERT INTO `favoris_utilisateur_vehicule` (`ID_Favori`, `ID_Utilisateur`, `ID_Vehicule`) VALUES
+(1, 21, 86),
+(2, 21, 91),
+(3, 21, 92);
 
 -- --------------------------------------------------------
 
@@ -175,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `guide_achat` (
   `Titre_guide_achat` varchar(100) DEFAULT NULL,
   `Contenu_guide_achat` text,
   PRIMARY KEY (`ID_Guide`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `guide_achat`
@@ -211,7 +238,8 @@ INSERT INTO `marque` (`ID_Marque`, `Nom_marque`, `Pays_origine`, `Siege_social`,
 (22, 'Volkswagen', 'Allemagne', 'Wolfsburg, Allemagne', 1937, '/volks'),
 (25, 'Skoda', 'Republique tcheque', 'Mlada Boleslav,tcheque', 1895, '/skoda'),
 (27, 'Peugeot', 'France', 'Sochaux, France', 1810, '/peugeot'),
-(29, 'Renault', 'France', 'Boulogne-Billancourt, France', 1899, '/renault');
+(29, 'Renault', 'France', 'Boulogne-Billancourt, France', 1899, '/renault'),
+(30, 'Land rover', 'Royaume Uni', 'Whitley, Coventry, Royaume Uni', 1948, '/landrover');
 
 -- --------------------------------------------------------
 
@@ -252,15 +280,19 @@ CREATE TABLE IF NOT EXISTS `note` (
   PRIMARY KEY (`ID_Note`),
   KEY `fk_note_user` (`ID_Utilisateur`),
   KEY `fk_note_vehicule` (`ID_Vehicule`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `note`
 --
 
 INSERT INTO `note` (`ID_Note`, `ID_Vehicule`, `ID_Utilisateur`, `Note`) VALUES
-(15, 89, 21, 2),
-(16, 89, 6, 3);
+(1, 92, 21, 8),
+(2, 91, 21, 8),
+(3, 86, 21, 7),
+(4, 91, 6, 7),
+(5, 92, 8, 7),
+(6, 91, 22, 8);
 
 -- --------------------------------------------------------
 
@@ -277,15 +309,16 @@ CREATE TABLE IF NOT EXISTS `note_marque` (
   PRIMARY KEY (`ID_Note`),
   KEY `ID_Marque` (`ID_Marque`),
   KEY `ID_Utilisateur` (`ID_Utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `note_marque`
 --
 
 INSERT INTO `note_marque` (`ID_Note`, `ID_Marque`, `ID_Utilisateur`, `Note`) VALUES
-(3, 22, 21, 2),
-(4, 22, 6, 4);
+(5, 22, 21, 8),
+(6, 22, 22, 8),
+(7, 30, 21, 5);
 
 -- --------------------------------------------------------
 
@@ -305,17 +338,17 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `bloque` varchar(20) DEFAULT NULL,
   `email_utilisateur` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_Utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`ID_Utilisateur`, `Nom_utilisateur`, `Prenom`, `Sexe`, `Date_de_naissance`, `Mot_de_passe`, `Status_de_validation`, `bloque`, `email_utilisateur`) VALUES
-(6, 'chabi', 'Emma', 'Femme', '1997-04-02', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'Emma@gmail.com'),
-(8, 'Emma', 'mameri', 'Femme', '1999-09-05', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'Sophia@gmail.com'),
-(21, 'ARAB', 'Bilal', 'Homme', '2002-03-09', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'bilal@gmail.com'),
-(22, 'hamoudi', 'abdesslam', 'Homme', '2003-06-08', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'En attente', 'Non', 'abdou@gmail.com');
+(6, 'Mammeri', 'Emma', 'Femme', '1997-04-02', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'Emma@gmail.com'),
+(8, 'Chabi', 'Sofia', 'Femme', '1999-09-05', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'Sophia@gmail.com'),
+(21, 'Arab', 'Bilal', 'Homme', '2002-03-09', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'bilal@gmail.com'),
+(22, 'Hamoudi', 'Abdesslam', 'Homme', '2003-06-08', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Valide', 'Non', 'abdou@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -338,7 +371,7 @@ CREATE TABLE IF NOT EXISTS `vehicule` (
   `Prix` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`ID_Vehicule`),
   KEY `fk_vehicule_marque` (`ID_Marque`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vehicule`
@@ -346,10 +379,20 @@ CREATE TABLE IF NOT EXISTS `vehicule` (
 
 INSERT INTO `vehicule` (`ID_Vehicule`, `ID_Marque`, `Modele`, `Version`, `Annee`, `Image_vehicule`, `Dimensions`, `Consommation`, `Moteur`, `Performance`, `Prix`) VALUES
 (86, 22, 'Golf', 'Life 2.0 TDI', 2020, '/golf', '4284x1789x1456', '4.1-4.2L/100km', 'I4 Diesel', '0-100km/h in 8.5s', '32000.00'),
-(87, 22, 'Touareg', 'R-Line V6 TDI', 2020, '/touareg', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '150000.00'),
-(88, 22, 'Touareg', 'R-Line V6 TDI', 2019, '/touareg', '4800x2100x1600', '4.1-4.2L/100km', 'I4 Diesel', '0-60mph in 5.5s', '200000.00'),
-(89, 22, 'Touareg', 'R-Line V6 TDI', 2018, '/touareg', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '20000.00'),
-(90, 22, 'Touareg', 'R-Line V6 TDI', 2017, '/touareg', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '200054.00');
+(91, 22, 'Tiguan', 'R-Line', 2015, '/Tiguan', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '150000.00'),
+(92, 22, 'Touareg', 'V8 TDI', 2019, '/touareg', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '300000.00'),
+(93, 25, 'Octavia', 'RS', 2018, '/octavia', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '120000.00'),
+(94, 25, 'Superb', 'SportLine', 2013, '/superb', '4800x2100x1600', '4.1-4.2L/100km', 'I4 Diesel', '0-60mph in 5.5s', '16000.00'),
+(95, 25, 'Kodiaq', 'Scout', 2020, '/kodiaq', '4800x2100x1600', '4.1-4.2L/100km', 'I5 Diesel', '0-60mph in 5.5s', '25000.00'),
+(96, 27, '208', 'GTi', 2014, '/208', '4800x2100x1600', '4.1-4.2L/100km', 'I4 Diesel', '0-60mph in 5.5s', '11000.00'),
+(97, 27, '3008', 'GT', 2011, '/3008', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '15000.00'),
+(98, 27, '508', 'SW', 2021, '/508', '4800x2100x1600', '5-6L/100km', 'V3 Hybrid', '0-60mph in 5.5s', '250000.00'),
+(99, 29, 'Clio', 'RS', 2015, '/clio', '4800x2100x1600', '4.1-4.2L/100km', 'I4 Diesel', '0-60mph in 5.5s', '120000.00'),
+(100, 29, 'Megane', 'RS', 2017, '/megane', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '20000.00'),
+(101, 29, 'Duster', 'RS', 2015, '/duster', '4800x2100x1600', '4.1-4.2L/100km', 'I4 Diesel', '0-60mph in 5.5s', '20000.00'),
+(102, 30, 'Range Rover', ' Sport SVR', 2020, '/range', '4800x2100x1600', '4.1-4.2L/100km', 'V6 Hybrid', '0-60mph in 5.5s', '30000.00'),
+(103, 30, 'Discovery', 'Sport', 2022, '/discovery', '4800x2100x1600', '4.1-4.2L/100km', 'V3 Hybrid', '0-60mph in 5.5s', '40000.00'),
+(104, 30, 'Defender', '90', 2022, '/defender', '4800x2100x1600', '4.1-4.2L/100km', 'V3 Hybrid', '0-60mph in 5.5s', '40000.00');
 
 --
 -- Constraints for dumped tables
